@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080b10">
+<meta name="mobile-web-app-capable" content="yes">
+<title>BlackStore</title>
+
+<style>
+:root{
+  --bg:#080b10;
+  --bg2:#0c1118;
+  --card:#111821;
+  --card2:#151e29;
+  --line:#202b38;
+  --text:#f4f7fb;
+  --muted:#8d9aaa;
+  --blue:#1264ff;
+  --blue2:#3180ff;
+  --danger:#ff3b4e;
+  --success:#20c77a;
+  --radius:20px;
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+}
+
+body{
+  overflow-x:hidden;
+  padding-bottom:82px;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 17px;
+  background:rgba(8,11,16,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:39px;
+  height:39px;
+  border-radius:12px;
+  background:linear-gradient(145deg,#111923,#07090d);
+  border:1px solid #263445;
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 25px rgba(18,100,255,.12);
+}
+
+.logo svg{
+  width:23px;
+  height:23px;
+}
+
+.brand-title{
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-.4px;
+}
+
+.brand-sub{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:2px;
+}
+
+.online{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#8e9bab;
+  font-size:11px;
+}
+
+.online-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--success);
+  box-shadow:0 0 9px rgba(32,199,122,.7);
+}
+
+main{
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  padding:16px;
+}
+
+.page{
+  display:none;
+  animation:pageIn .22s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-radius:27px;
+  padding:27px 22px;
+  min-height:220px;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(18,100,255,.30),transparent 36%),
+    linear-gradient(145deg,#111a25,#0b1017);
+  border:1px solid #1d2a38;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:170px;
+  height:170px;
+  right:-70px;
+  bottom:-80px;
+  border-radius:50%;
+  background:rgba(18,100,255,.12);
+  filter:blur(8px);
+}
+
+.hero-label{
+  color:#75a9ff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  margin:12px 0 9px;
+  font-size:32px;
+  line-height:1.03;
+  letter-spacing:-1.5px;
+  max-width:500px;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+  max-width:500px;
+  margin:0;
+}
+
+.search{
+  margin-top:15px;
+  position:relative;
+}
+
+.search svg{
+  position:absolute;
+  left:15px;
+  top:50%;
+  transform:translateY(-50%);
+  width:19px;
+  color:#748397;
+}
+
+.search input{
+  width:100%;
+  height:51px;
+  border:1px solid var(--line);
+  outline:0;
+  border-radius:16px;
+  background:#0e141c;
+  color:var(--text);
+  padding:0 15px 0 46px;
+}
+
+.search input:focus{
+  border-color:#245fae;
+  box-shadow:0 0 0 3px rgba(18,100,255,.08);
+}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:24px 2px 12px;
+}
+
+.section-head h2{
+  font-size:18px;
+  margin:0;
+}
+
+.section-head span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.quick{
+  min-height:116px;
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:19px;
+  padding:18px;
+  text-align:left;
+  color:var(--text);
+  transition:.18s;
+}
+
+.quick:active{
+  transform:scale(.97);
+}
+
+.quick-icon{
+  width:39px;
+  height:39px;
+  display:grid;
+  place-items:center;
+  background:#162334;
+  border-radius:13px;
+  margin-bottom:14px;
+}
+
+.quick-icon svg{
+  width:21px;
+}
+
+.quick strong{
+  display:block;
+  font-size:14px;
+}
+
+.quick small{
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin-top:13px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px 8px;
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+  font-size:20px;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:4px;
+  display:block;
+}
+
+.catalog-title{
+  margin-top:4px;
+}
+
+.catalog-list{
+  display:grid;
+  gap:11px;
+}
+
+.app-card{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:12px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  transition:.18s;
+}
+
+.app-card:active{
+  transform:scale(.985);
+}
+
+.app-icon{
+  width:62px;
+  height:62px;
+  flex:none;
+  border-radius:17px;
+  background:#18212d;
+  border:1px solid #273545;
+  object-fit:cover;
+  display:block;
+}
+
+.app-info{
+  min-width:0;
+  flex:1;
+}
+
+.app-name{
+  font-size:15px;
+  font-weight:750;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.app-desc{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.4;
+  margin-top:4px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.app-meta{
+  color:#6f7e8f;
+  font-size:10px;
+  margin-top:7px;
+}
+
+.card-arrow{
+  width:32px;
+  height:32px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  background:#182231;
+  color:#9aabc0;
+}
+
+.empty{
+  text-align:center;
+  padding:42px 20px;
+  color:var(--muted);
+  border:1px dashed #27313d;
+  border-radius:18px;
+}
+
+.empty svg{
+  width:36px;
+  margin-bottom:10px;
+  opacity:.7;
+}
+
+.form-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:21px;
+  padding:18px;
+  margin-top:14px;
+}
+
+.form-title{
+  font-size:19px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.form-sub{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.field{
+  margin-bottom:13px;
+}
+
+.field label{
+  display:block;
+  font-size:11px;
+  color:#9eabb9;
+  margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  border:1px solid var(--line);
+  background:#0d131a;
+  color:var(--text);
+  outline:0;
+  border-radius:14px;
+  padding:13px;
+}
+
+.field input{
+  height:47px;
+}
+
+.field textarea{
+  min-height:105px;
+  resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:#245fae;
+}
+
+.file-box{
+  border:1px dashed #304052;
+  border-radius:16px;
+  padding:17px;
+  text-align:center;
+  background:#0d131a;
+  margin-bottom:13px;
+}
+
+.file-box input{
+  width:100%;
+}
+
+.preview{
+  width:78px;
+  height:78px;
+  object-fit:cover;
+  border-radius:20px;
+  margin:0 auto 10px;
+  display:none;
+  border:1px solid #304052;
+}
+
+.btn{
+  width:100%;
+  min-height:48px;
+  border-radius:14px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:750;
+  margin-top:5px;
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+
+.btn.secondary{
+  background:#18222e;
+  border:1px solid #273545;
+  color:#e9eef5;
+}
+
+.btn.danger{
+  background:rgba(255,59,78,.12);
+  color:#ff6978;
+  border:1px solid rgba(255,59,78,.24);
+}
+
+.profile{
+  text-align:center;
+}
+
+.profile-avatar{
+  width:84px;
+  height:84px;
+  margin:12px auto;
+  border-radius:27px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#16263a,#0d141d);
+  border:1px solid #2a3c51;
+  font-size:30px;
+  font-weight:800;
+}
+
+.profile-name{
+  font-size:21px;
+  font-weight:800;
+}
+
+.profile-email{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
+  word-break:break-all;
+}
+
+.profile-actions{
+  display:grid;
+  gap:10px;
+  margin-top:22px;
+}
+
+.admin-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:9px;
+  padding:6px 10px;
+  border-radius:9px;
+  color:#73a7ff;
+  background:rgba(18,100,255,.10);
+  border:1px solid rgba(18,100,255,.20);
+  font-size:10px;
+  font-weight:700;
+}
+
+.bottom-nav{
+  position:fixed;
+  z-index:100;
+  left:0;
+  right:0;
+  bottom:0;
+  height:76px;
+  padding:7px 8px 9px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:rgba(9,13,18,.94);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+.nav-btn{
+  background:none;
+  color:#687789;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  border-radius:14px;
+}
+
+.nav-btn svg{
+  width:21px;
+  height:21px;
+}
+
+.nav-btn span{
+  font-size:9px;
+}
+
+.nav-btn.active{
+  color:#fff;
+  background:rgba(18,100,255,.10);
+}
+
+.modal-bg{
+  position:fixed;
+  z-index:200;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  backdrop-filter:blur(7px);
+}
+
+.modal-bg.show{
+  display:flex;
+}
+
+.modal{
+  width:100%;
+  max-width:650px;
+  max-height:91vh;
+  overflow:auto;
+  background:#0d131b;
+  border:1px solid #24303d;
+  border-radius:25px 25px 0 0;
+  padding:20px;
+  animation:modalIn .22s ease;
+}
+
+@keyframes modalIn{
+  from{transform:translateY(40px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+.modal-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:17px;
+}
+
+.close{
+  width:35px;
+  height:35px;
+  border-radius:11px;
+  background:#17202a;
+  color:#aab7c5;
+  display:grid;
+  place-items:center;
+}
+
+.detail-icon{
+  width:94px;
+  height:94px;
+  border-radius:25px;
+  object-fit:cover;
+  border:1px solid #2c3c4e;
+  display:block;
+  margin-bottom:14px;
+}
+
+.detail-name{
+  font-size:25px;
+  font-weight:850;
+  letter-spacing:-.8px;
+}
+
+.detail-type{
+  display:inline-block;
+  color:#76a9ff;
+  font-size:10px;
+  margin-top:7px;
+}
+
+.detail-desc{
+  color:#a2afbd;
+  line-height:1.6;
+  font-size:13px;
+  white-space:pre-wrap;
+  margin:16px 0;
+}
+
+.detail-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-bottom:15px;
+}
+
+.detail-box{
+  padding:13px;
+  border-radius:14px;
+  background:#121a23;
+  border:1px solid #202c38;
+}
+
+.detail-box span{
+  display:block;
+  color:#728193;
+  font-size:9px;
+}
+
+.detail-box b{
+  display:block;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.toast{
+  position:fixed;
+  z-index:500;
+  left:15px;
+  right:15px;
+  bottom:91px;
+  padding:14px 16px;
+  background:#161e28;
+  border:1px solid #2a3746;
+  border-radius:14px;
+  color:#fff;
+  font-size:12px;
+  display:none;
+  box-shadow:0 15px 50px rgba(0,0,0,.35);
+}
+
+.toast.show{
+  display:block;
+  animation:toastIn .2s ease;
+}
+
+@keyframes toastIn{
+  from{transform:translateY(10px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+.loader{
+  width:25px;
+  height:25px;
+  border:3px solid #253344;
+  border-top-color:var(--blue);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  margin:20px auto;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.admin-list{
+  display:grid;
+  gap:9px;
+}
+
+.admin-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  background:#121a23;
+  border:1px solid #222e3a;
+  border-radius:15px;
+}
+
+.admin-row img{
+  width:48px;
+  height:48px;
+  object-fit:cover;
+  border-radius:13px;
+  background:#18222d;
+}
+
+.admin-row-info{
+  min-width:0;
+  flex:1;
+}
+
+.admin-row-info b{
+  font-size:13px;
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.admin-row-info span{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.small-danger{
+  width:38px;
+  height:38px;
+  flex:none;
+  border-radius:11px;
+  background:rgba(255,59,78,.1);
+  color:#ff6373;
+  display:grid;
+  place-items:center;
+}
+
+.small-danger svg{
+  width:17px;
+}
+
+.hidden{
+  display:none!important;
+}
+
+@media(min-width:700px){
+  .bottom-nav{
+    left:50%;
+    right:auto;
+    width:650px;
+    transform:translateX(-50%);
+    border:1px solid #202c38;
+    border-bottom:0;
+    border-radius:20px 20px 0 0;
+  }
+
+  .modal-bg{
+    align-items:center;
+  }
+
+  .modal{
+    border-radius:25px;
+    max-height:85vh;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="brand">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 5h16v14H4z"/>
+        <path d="M8 9h8M8 13h5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="brand-title">BlackStore</div>
+      <div class="brand-sub">Applications & Games</div>
+    </div>
+  </div>
+
+  <div class="online">
+    <span class="online-dot"></span>
+    Online
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="homePage" class="page active">
+
+    <div class="hero">
+      <div class="hero-label">BLACKSTORE</div>
+      <h1>Приложения и игры в одном месте.</h1>
+      <p>
+        Каталог Android-приложений и игр.
+        Выбирай, открывай страницу и скачивай APK прямо на телефон.
+      </p>
+    </div>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+      </svg>
+      <input id="homeSearch" placeholder="Поиск приложений и игр..." autocomplete="off">
+    </div>
+
+    <div class="quick-grid">
+      <button class="quick" onclick="goPage('apps')">
+        <div class="quick-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="6" height="6" rx="1"/>
+            <rect x="14" y="4" width="6" height="6" rx="1"/>
+            <rect x="4" y="14" width="6" height="6" rx="1"/>
+            <rect x="14" y="14" width="6" height="6" rx="1"/>
+          </svg>
+        </div>
+        <strong>Приложения</strong>
+        <small>Весь каталог</small>
+      </button>
+
+      <button class="quick" onclick="goPage('games')">
+        <div class="quick-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 8h10a5 5 0 0 1 4.7 6.7l-1.2 3.1a2 2 0 0 1-3.5.5l-2-2.3H9l-2 2.3a2 2 0 0 1-3.5-.5l-1.2-3.1A5 5 0 0 1 7 8Z"/>
+            <path d="M8 11v4M6 13h4M16 12h.01M19 14h.01"/>
+          </svg>
+        </div>
+        <strong>Игры</strong>
+        <small>Игровой каталог</small>
+      </button>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <b id="statApps">0</b>
+        <span>Приложений</span>
+      </div>
+      <div class="stat">
+        <b id="statGames">0</b>
+        <span>Игр</span>
+      </div>
+      <div class="stat">
+        <b id="statDownloads">0</b>
+        <span>Скачиваний</span>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <h2>Последние публикации</h2>
+      <span id="latestCount">0</span>
+    </div>
+
+    <div id="latestList" class="catalog-list">
+      <div class="loader"></div>
+    </div>
+
+  </section>
+
+
+  <!-- APPS -->
+  <section id="appsPage" class="page">
+
+    <div class="section-head catalog-title">
+      <h2>Приложения</h2>
+      <span id="appsCount">0</span>
+    </div>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+      </svg>
+      <input id="appsSearch" placeholder="Поиск приложений..." autocomplete="off">
+    </div>
+
+    <div id="appsList" class="catalog-list" style="margin-top:14px">
+      <div class="loader"></div>
+    </div>
+
+  </section>
+
+
+  <!-- GAMES -->
+  <section id="gamesPage" class="page">
+
+    <div class="section-head catalog-title">
+      <h2>Игры</h2>
+      <span id="gamesCount">0</span>
+    </div>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+      </svg>
+      <input id="gamesSearch" placeholder="Поиск игр..." autocomplete="off">
+    </div>
+
+    <div id="gamesList" class="catalog-list" style="margin-top:14px">
+      <div class="loader"></div>
+    </div>
+
+  </section>
+
+
+  <!-- PROFILE -->
+  <section id="profilePage" class="page">
+
+    <div id="profileLoggedOut">
+
+      <div class="form-card">
+        <div class="profile-avatar">B</div>
+        <div class="form-title" style="text-align:center">BlackStore</div>
+        <div class="form-sub" style="text-align:center">
+          Войдите или зарегистрируйтесь, чтобы получить доступ к профилю.
+        </div>
+
+        <div class="profile-actions">
+          <button class="btn" onclick="openAuth('login')">Войти</button>
+          <button class="btn secondary" onclick="openAuth('register')">Регистрация</button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="profileLoggedIn" class="hidden">
+
+      <div class="form-card profile">
+
+        <div class="profile-avatar" id="profileAvatar">B</div>
+
+        <div class="profile-name" id="profileName">Пользователь</div>
+
+        <div class="profile-email" id="profileEmail"></div>
+
+        <div id="adminBadge" class="admin-badge hidden">
+          ADMIN
+        </div>
+
+        <div class="profile-actions">
+
+          <button id="adminButton" class="btn hidden" onclick="openAdmin()">
+            Админ-панель
+          </button>
+
+          <button id="addButton" class="btn secondary hidden" onclick="openAddApp()">
+            Добавить приложение / игру
+          </button>
+
+          <button class="btn danger" onclick="logout()">
+            Выйти
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ADMIN -->
+  <section id="adminPage" class="page">
+
+    <div class="section-head">
+      <h2>Админ-панель</h2>
+      <span>BlackStore</span>
+    </div>
+
+    <div class="form-card">
+
+      <div class="form-title">Управление каталогом</div>
+
+      <div class="form-sub">
+        Только аккаунт администратора может публиковать, изменять и удалять приложения и игры.
+      </div>
+
+      <button class="btn" onclick="openAddApp()">
+        Добавить приложение / игру
+      </button>
+
+    </div>
+
+    <div class="section-head">
+      <h2>Публикации</h2>
+      <span id="adminCount">0</span>
+    </div>
+
+    <div id="adminList" class="admin-list"></div>
+
+  </section>
+
+</main>
+
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+  <button class="nav-btn active" data-page="home" onclick="goPage('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m3 11 9-8 9 8"/>
+      <path d="M5 10v10h14V10"/>
+      <path d="M9 20v-6h6v6"/>
+    </svg>
+    <span>Главная</span>
+  </button>
+
+  <button class="nav-btn" data-page="apps" onclick="goPage('apps')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="4" y="4" width="6" height="6" rx="1"/>
+      <rect x="14" y="4" width="6" height="6" rx="1"/>
+      <rect x="4" y="14" width="6" height="6" rx="1"/>
+      <rect x="14" y="14" width="6" height="6" rx="1"/>
+    </svg>
+    <span>Приложения</span>
+  </button>
+
+  <button class="nav-btn" data-page="games" onclick="goPage('games')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M7 8h10a5 5 0 0 1 4.7 6.7l-1.2 3.1a2 2 0 0 1-3.5.5l-2-2.3H9l-2 2.3a2 2 0 0 1-3.5-.5l-1.2-3.1A5 5 0 0 1 7 8Z"/>
+      <path d="M8 11v4M6 13h4M16 12h.01M19 14h.01"/>
+    </svg>
+    <span>Игры</span>
+  </button>
+
+  <button class="nav-btn" data-page="profile" onclick="goPage('profile')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 21a8 8 0 0 1 16 0"/>
+    </svg>
+    <span>Профиль</span>
+  </button>
+
+</nav>
+
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-bg" onclick="modalOutside(event,'authModal')">
+
+  <div class="modal">
+
+    <div class="modal-top">
+      <strong id="authTitle">Вход</strong>
+
+      <button class="close" onclick="closeModal('authModal')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="registerUsernameField" class="field hidden">
+      <label>Имя пользователя</label>
+      <input id="registerUsername" placeholder="Например: Salomat">
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email">
+    </div>
+
+    <div class="field">
+      <label>Пароль</label>
+      <input id="authPassword" type="password" placeholder="Пароль" autocomplete="current-password">
+    </div>
+
+    <button id="authSubmit" class="btn" onclick="submitAuth()">Войти</button>
+
+    <button id="authSwitch" class="btn secondary" onclick="switchAuthMode()">
+      Создать аккаунт
+    </button>
+
+  </div>
+</div>
+
+
+<!-- APP DETAIL MODAL -->
+<div id="detailModal" class="modal-bg" onclick="modalOutside(event,'detailModal')">
+
+  <div class="modal">
+
+    <div class="modal-top">
+      <strong>Информация</strong>
+
+      <button class="close" onclick="closeModal('detailModal')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </div>
+
+    <img id="detailIcon" class="detail-icon" src="" alt="">
+
+    <div id="detailName" class="detail-name"></div>
+    <div id="detailType" class="detail-type"></div>
+
+    <div id="detailDesc" class="detail-desc"></div>
+
+    <div class="detail-info">
+      <div class="detail-box">
+        <span>Версия</span>
+        <b id="detailVersion">—</b>
+      </div>
+
+      <div class="detail-box">
+        <span>Скачивания</span>
+        <b id="detailDownloads">0</b>
+      </div>
+
+      <div class="detail-box">
+        <span>Категория</span>
+        <b id="detailCategory">—</b>
+      </div>
+
+      <div class="detail-box">
+        <span>Дата</span>
+        <b id="detailDate">—</b>
+      </div>
+    </div>
+
+    <button id="downloadButton" class="btn">
+      Скачать APK
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ADD MODAL -->
+<div id="addModal" class="modal-bg" onclick="modalOutside(event,'addModal')">
+
+  <div class="modal">
+
+    <div class="modal-top">
+      <strong>Добавить публикацию</strong>
+
+      <button class="close" onclick="closeModal('addModal')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="form-sub">
+      Заполни данные и загрузи APK. Публикация появится в каталоге после успешной загрузки.
+    </div>
+
+    <div class="field">
+      <label>Название</label>
+      <input id="addName" placeholder="Название приложения или игры">
+    </div>
+
+    <div class="field">
+      <label>Тип</label>
+      <select id="addType">
+        <option value="app">Приложение</option>
+        <option value="game">Игра</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Категория</label>
+      <input id="addCategory" placeholder="Например: Инструменты">
+    </div>
+
+    <div class="field">
+      <label>Версия</label>
+      <input id="addVersion" value="1.0.0" placeholder="1.0.0">
+    </div>
+
+    <div class="field">
+      <label>Описание</label>
+      <textarea id="addDescription" placeholder="Описание приложения..."></textarea>
+    </div>
+
+    <div class="file-box">
+      <img id="iconPreview" class="preview" alt="">
+      <div style="font-size:12px;margin-bottom:9px">Иконка</div>
+      <input id="iconFile" type="file" accept="image/*">
+    </div>
+
+    <div class="file-box">
+      <div style="font-size:12px;margin-bottom:9px">APK-файл</div>
+      <input id="apkFile" type="file" accept=".apk,application/vnd.android.package-archive">
+    </div>
+
+    <button id="publishButton" class="btn" onclick="publishApp()">
+      Опубликовать
+    </button>
+
+  </div>
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+/* =========================================
+   BLACKSTORE SUPABASE
+========================================= */
+
+const SUPABASE_URL = "https://oygljkiyukqorevrnkja.supabase.co";
+const SUPABASE_KEY = "sb_publishable_U8AtOrufsfgCO_wH0x1D_w_nSNqRyS9";
+
+const FILE_BUCKET = "blackstore-files";
+const IMAGE_BUCKET = "blackstore-images";
+
+const ADMIN_EMAIL = "blackstore@blackstore.app";
+
+let accessToken = localStorage.getItem("blackstore_access_token") || "";
+let currentUser = null;
+let currentProfile = null;
+let authMode = "login";
+let allApps = [];
+let currentDetail = null;
+
+
+/* =========================================
+   SUPABASE REQUEST
+========================================= */
+
+async function sbFetch(path, options = {}){
+
+  const headers = {
+    "apikey": SUPABASE_KEY,
+    ...options.headers
+  };
+
+  if(accessToken){
+    headers["Authorization"] = "Bearer " + accessToken;
+  }
+
+  if(options.body && !headers["Content-Type"]){
+    headers["Content-Type"] = "application/json";
+  }
+
+  const res = await fetch(SUPABASE_URL + path, {
+    ...options,
+    headers
+  });
+
+  const text = await res.text();
+
+  let data = null;
+
+  try{
+    data = text ? JSON.parse(text) : null;
+  }catch{
+    data = text;
+  }
+
+  if(!res.ok){
+
+    let message = "Ошибка Supabase";
+
+    if(data && data.message) message = data.message;
+    else if(data && data.error_description) message = data.error_description;
+    else if(data && data.error) message = data.error;
+    else if(typeof data === "string" && data) message = data;
+
+    throw new Error(message);
+  }
+
+  return data;
+}
+
+
+/* =========================================
+   AUTH
+========================================= */
+
+async function register(email,password,username){
+
+  const data = await sbFetch("/auth/v1/signup",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      email,
+      password,
+      data:{
+        username: username || email.split("@")[0]
+      }
+    })
+  });
+
+  if(data && data.access_token){
+
+    accessToken = data.access_token;
+    localStorage.setItem("blackstore_access_token",accessToken);
+  }
+
+  if(!data || !data.user){
+    throw new Error("Аккаунт не был создан");
+  }
+
+  if(!data.access_token){
+    showToast("Аккаунт создан. Проверьте подтверждение email, если оно требуется.");
+  }
+
+  return data;
+}
+
+
+async function login(email,password){
+
+  const data = await sbFetch(
+    "/auth/v1/token?grant_type=password",
+    {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        email,
+        password
+      })
+    }
+  );
+
+  accessToken = data.access_token;
+
+  localStorage.setItem(
+    "blackstore_access_token",
+    accessToken
+  );
+
+  return data;
+}
+
+
+async function getUser(){
+
+  if(!accessToken) return null;
+
+  try{
+
+    return await sbFetch("/auth/v1/user");
+
+  }catch{
+
+    accessToken = "";
+    localStorage.removeItem("blackstore_access_token");
+
+    return null;
+  }
+}
+
+
+async function logout(){
+
+  try{
+
+    if(accessToken){
+      await sbFetch("/auth/v1/logout",{
+        method:"POST"
+      });
+    }
+
+  }catch{}
+
+  accessToken = "";
+  currentUser = null;
+  currentProfile = null;
+
+  localStorage.removeItem("blackstore_access_token");
+
+  updateProfileUI();
+  goPage("profile");
+
+  showToast("Вы вышли из аккаунта");
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+async function loadProfile(){
+
+  if(!currentUser){
+
+    currentProfile = null;
+    updateProfileUI();
+    return;
+  }
+
+  try{
+
+    const rows = await sbFetch(
+      "/rest/v1/profiles?id=eq." +
+      encodeURIComponent(currentUser.id) +
+      "&select=*"
+    );
+
+    currentProfile = rows && rows[0] ? rows[0] : null;
+
+  }catch(e){
+
+    console.error(e);
+    currentProfile = null;
+  }
+
+  updateProfileUI();
+}
+
+
+function isAdmin(){
+
+  return !!(
+    currentProfile &&
+    currentProfile.role === "admin"
+  );
+}
+
+
+function updateProfileUI(){
+
+  const out = document.getElementById("profileLoggedOut");
+  const inn = document.getElementById("profileLoggedIn");
+
+  if(!currentUser){
+
+    out.classList.remove("hidden");
+    inn.classList.add("hidden");
+
+    return;
+  }
+
+  out.classList.add("hidden");
+  inn.classList.remove("hidden");
+
+  const username =
+    (currentProfile && currentProfile.username) ||
+    currentUser.user_metadata?.username ||
+    currentUser.email?.split("@")[0] ||
+    "Пользователь";
+
+  document.getElementById("profileName").textContent = username;
+  document.getElementById("profileEmail").textContent = currentUser.email || "";
+
+  document.getElementById("profileAvatar").textContent =
+    username.substring(0,1).toUpperCase();
+
+  const admin = isAdmin();
+
+  document.getElementById("adminButton")
+    .classList.toggle("hidden",!admin);
+
+  document.getElementById("addButton")
+    .classList.toggle("hidden",!admin);
+
+  document.getElementById("adminBadge")
+    .classList.toggle("hidden",!admin);
+}
+
+
+/* =========================================
+   AUTH UI
+========================================= */
+
+function openAuth(mode){
+
+  authMode = mode;
+
+  document.getElementById("authModal")
+    .classList.add("show");
+
+  updateAuthUI();
+}
+
+
+function updateAuthUI(){
+
+  const register =
+    authMode === "register";
+
+  document.getElementById("authTitle").textContent =
+    register ? "Регистрация" : "Вход";
+
+  document.getElementById("authSubmit").textContent =
+    register ? "Создать аккаунт" : "Войти";
+
+  document.getElementById("authSwitch").textContent =
+    register ? "У меня уже есть аккаунт" : "Создать аккаунт";
+
+  document.getElementById("registerUsernameField")
+    .classList.toggle("hidden",!register);
+}
+
+
+function switchAuthMode(){
+
+  authMode =
+    authMode === "login"
+    ? "register"
+    : "login";
+
+  updateAuthUI();
+}
+
+
+async function submitAuth(){
+
+  const email =
+    document.getElementById("authEmail").value.trim();
+
+  const password =
+    document.getElementById("authPassword").value;
+
+  const username =
+    document.getElementById("registerUsername").value.trim();
+
+  if(!email || !password){
+
+    showToast("Заполни email и пароль");
+    return;
+  }
+
+  if(authMode === "register" && password.length < 6){
+
+    showToast("Пароль должен содержать минимум 6 символов");
+    return;
+  }
+
+  const button =
+    document.getElementById("authSubmit");
+
+  button.disabled = true;
+  button.textContent = "Подождите...";
+
+  try{
+
+    if(authMode === "register"){
+
+      await register(
+        email,
+        password,
+        username
+      );
+
+      closeModal("authModal");
+
+      showToast("Аккаунт создан");
+
+    }else{
+
+      await login(
+        email,
+        password
+      );
+
+      closeModal("authModal");
+
+      showToast("Вход выполнен");
+    }
+
+    currentUser = await getUser();
+
+    await loadProfile();
+
+  }catch(e){
+
+    showToast(e.message || "Ошибка авторизации");
+
+  }finally{
+
+    button.disabled = false;
+    updateAuthUI();
+  }
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function goPage(page){
+
+  document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
+
+  const target =
+    document.getElementById(page + "Page");
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document.querySelectorAll(".nav-btn")
+    .forEach(btn=>{
+      btn.classList.toggle(
+        "active",
+        btn.dataset.page === page
+      );
+    });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  if(page === "apps") renderCatalog("app");
+  if(page === "games") renderCatalog("game");
+  if(page === "admin") renderAdmin();
+}
+
+
+/* =========================================
+   LOAD APPS
+========================================= */
+
+async function loadApps(){
+
+  try{
+
+    allApps = await sbFetch(
+      "/rest/v1/apps?select=*&order=created_at.desc"
+    );
+
+    if(!Array.isArray(allApps)){
+      allApps = [];
+    }
+
+  }catch(e){
+
+    console.error(e);
+
+    allApps = [];
+
+    showToast("Не удалось загрузить каталог");
+  }
+
+  updateStats();
+  renderLatest();
+  renderCatalog("app");
+  renderCatalog("game");
+
+  if(isAdmin()){
+    renderAdmin();
+  }
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+function updateStats(){
+
+  const apps =
+    allApps.filter(x=>x.type==="app");
+
+  const games =
+    allApps.filter(x=>x.type==="game");
+
+  const downloads =
+    allApps.reduce(
+      (sum,x)=>sum + Number(x.downloads || 0),
+      0
+    );
+
+  document.getElementById("statApps").textContent =
+    apps.length;
+
+  document.getElementById("statGames").textContent =
+    games.length;
+
+  document.getElementById("statDownloads").textContent =
+    formatNumber(downloads);
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+function appCard(app){
+
+  const icon =
+    app.icon_url ||
+    makePlaceholderIcon(app.name);
+
+  const type =
+    app.type === "game"
+    ? "Игра"
+    : "Приложение";
+
+  return `
+    <button class="app-card" onclick="openDetail(${Number(app.id)})">
+
+      <img
+        class="app-icon"
+        src="${escapeAttr(icon)}"
+        alt=""
+        onerror="this.src='${escapeAttr(makePlaceholderIcon(app.name))}'"
+      >
+
+      <div class="app-info">
+
+        <div class="app-name">
+          ${escapeHtml(app.name || "Без названия")}
+        </div>
+
+        <div class="app-desc">
+          ${escapeHtml(app.description || "Без описания")}
+        </div>
+
+        <div class="app-meta">
+          ${escapeHtml(type)}
+          ·
+          ${escapeHtml(app.version || "1.0.0")}
+          ·
+          ${formatNumber(app.downloads || 0)} скач.
+        </div>
+
+      </div>
+
+      <div class="card-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </div>
+
+    </button>
+  `;
+}
+
+
+/* =========================================
+   LATEST
+========================================= */
+
+function renderLatest(){
+
+  const list =
+    document.getElementById("latestList");
+
+  const latest =
+    allApps.slice(0,8);
+
+  document.getElementById("latestCount")
+    .textContent = latest.length;
+
+  if(!latest.length){
+
+    list.innerHTML = emptyState(
+      "Каталог пока пуст"
+    );
+
+    return;
+  }
+
+  list.innerHTML =
+    latest.map(appCard).join("");
+}
+
+
+/* =========================================
+   CATALOG
+========================================= */
+
+function renderCatalog(type){
+
+  const isApp = type === "app";
+
+  const list =
+    document.getElementById(
+      isApp ? "appsList" : "gamesList"
+    );
+
+  const count =
+    document.getElementById(
+      isApp ? "appsCount" : "gamesCount"
+    );
+
+  const search =
+    document.getElementById(
+      isApp ? "appsSearch" : "gamesSearch"
+    );
+
+  if(!list) return;
+
+  const query =
+    (search?.value || "")
+      .trim()
+      .toLowerCase();
+
+  const filtered =
+    allApps.filter(app=>{
+
+      if(app.type !== type) return false;
+
+      if(!query) return true;
+
+      return (
+        String(app.name || "")
+          .toLowerCase()
+          .includes(query)
+        ||
+        String(app.description || "")
+          .toLowerCase()
+          .includes(query)
+        ||
+        String(app.category || "")
+          .toLowerCase()
+          .includes(query)
+      );
+    });
+
+  count.textContent =
+    filtered.length;
+
+  if(!filtered.length){
+
+    list.innerHTML =
+      emptyState(
+        query
+          ? "Ничего не найдено"
+          : "Здесь пока ничего нет"
+      );
+
+    return;
+  }
+
+  list.innerHTML =
+    filtered.map(appCard).join("");
+}
+
+
+/* =========================================
+   DETAIL
+========================================= */
+
+function openDetail(id){
+
+  const app =
+    allApps.find(x=>Number(x.id) === Number(id));
+
+  if(!app) return;
+
+  currentDetail = app;
+
+  document.getElementById("detailIcon").src =
+    app.icon_url ||
+    makePlaceholderIcon(app.name);
+
+  document.getElementById("detailName").textContent =
+    app.name || "Без названия";
+
+  document.getElementById("detailType").textContent =
+    app.type === "game"
+      ? "ИГРА"
+      : "ПРИЛОЖЕНИЕ";
+
+  document.getElementById("detailDesc").textContent =
+    app.description || "Описание отсутствует.";
+
+  document.getElementById("detailVersion").textContent =
+    app.version || "1.0.0";
+
+  document.getElementById("detailDownloads").textContent =
+    formatNumber(app.downloads || 0);
+
+  document.getElementById("detailCategory").textContent =
+    app.category || "Другое";
+
+  document.getElementById("detailDate").textContent =
+    formatDate(app.created_at);
+
+  const btn =
+    document.getElementById("downloadButton");
+
+  btn.disabled = !app.apk_url;
+
+  btn.textContent =
+    app.apk_url
+      ? "Скачать APK"
+      : "APK недоступен";
+
+  btn.onclick =
+    ()=>downloadApp(app);
+
+  document.getElementById("detailModal")
+    .classList.add("show");
+}
+
+
+async function downloadApp(app){
+
+  if(!app.apk_url){
+
+    showToast("APK-файл отсутствует");
+    return;
+  }
+
+  try{
+
+    await sbFetch(
+      "/rest/v1/rpc/increment_downloads",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          app_id:Number(app.id)
+        })
+      }
+    );
+
+  }catch(e){
+
+    console.warn("Counter error:",e);
+  }
+
+  const newCount =
+    Number(app.downloads || 0) + 1;
+
+  app.downloads = newCount;
+
+  updateStats();
+
+  document.getElementById("detailDownloads")
+    .textContent = formatNumber(newCount);
+
+  /*
+    download attribute не всегда работает
+    одинаково во всех Android WebView.
+    Поэтому открываем публичный APK URL.
+    Android предложит скачать файл.
+  */
+
+  const a =
+    document.createElement("a");
+
+  a.href = app.apk_url;
+  a.download = "";
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  showToast("Загрузка APK началась");
+}
+
+
+/* =========================================
+   ADD APP
+========================================= */
+
+function openAddApp(){
+
+  if(!isAdmin()){
+
+    showToast("Доступ только для администратора");
+    return;
+  }
+
+  document.getElementById("addModal")
+    .classList.add("show");
+}
+
+
+document.getElementById("iconFile")
+  .addEventListener("change",function(){
+
+    const file = this.files[0];
+
+    const preview =
+      document.getElementById("iconPreview");
+
+    if(!file){
+
+      preview.style.display="none";
+      return;
+    }
+
+    const url =
+      URL.createObjectURL(file);
+
+    preview.src = url;
+    preview.style.display = "block";
+  });
+
+
+async function publishApp(){
+
+  if(!isAdmin()){
+
+    showToast("Только администратор может публиковать");
+    return;
+  }
+
+  const name =
+    document.getElementById("addName").value.trim();
+
+  const type =
+    document.getElementById("addType").value;
+
+  const category =
+    document.getElementById("addCategory").value.trim()
+    || "Другое";
+
+  const version =
+    document.getElementById("addVersion").value.trim()
+    || "1.0.0";
+
+  const description =
+    document.getElementById("addDescription").value.trim();
+
+  const iconFile =
+    document.getElementById("iconFile").files[0];
+
+  const apkFile =
+    document.getElementById("apkFile").files[0];
+
+  if(!name){
+
+    showToast("Введите название");
+    return;
+  }
+
+  if(!apkFile){
+
+    showToast("Выберите APK-файл");
+    return;
+  }
+
+  if(apkFile.name.toLowerCase().endsWith(".apk") === false){
+
+    showToast("Нужен APK-файл");
+    return;
+  }
+
+  const button =
+    document.getElementById("publishButton");
+
+  button.disabled = true;
+  button.textContent = "Загрузка...";
+
+  try{
+
+    let iconUrl = null;
+
+    /* ---------- ICON ---------- */
+
+    if(iconFile){
+
+      const iconPath =
+        currentUser.id +
+        "/" +
+        Date.now() +
+        "_" +
+        safeFileName(iconFile.name);
+
+      await uploadFile(
+        IMAGE_BUCKET,
+        iconPath,
+        iconFile
+      );
+
+      iconUrl =
+        publicStorageUrl(
+          IMAGE_BUCKET,
+          iconPath
+        );
+    }
+
+
+    /* ---------- APK ---------- */
+
+    const apkPath =
+      currentUser.id +
+      "/" +
+      Date.now() +
+      "_" +
+      safeFileName(apkFile.name);
+
+    await uploadFile(
+      FILE_BUCKET,
+      apkPath,
+      apkFile
+    );
+
+    const apkUrl =
+      publicStorageUrl(
+        FILE_BUCKET,
+        apkPath
+      );
+
+
+    /* ---------- DATABASE ---------- */
+
+    const rows =
+      await sbFetch(
+        "/rest/v1/apps",
+        {
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json",
+            "Prefer":"return=representation"
+          },
+          body:JSON.stringify({
+            owner_id:currentUser.id,
+            name,
+            description,
+            version,
+            type,
+            category,
+            icon_url:iconUrl,
+            apk_url:apkUrl,
+            screenshots:[],
+            downloads:0
+          })
+        }
+      );
+
+    if(!rows || !rows.length){
+
+      throw new Error(
+        "Публикация не была сохранена"
+      );
+    }
+
+    closeModal("addModal");
+
+    clearAddForm();
+
+    await loadApps();
+
+    showToast("Публикация добавлена");
+
+  }catch(e){
+
+    console.error(e);
+
+    showToast(
+      "Ошибка публикации: " +
+      (e.message || "неизвестная ошибка")
+    );
+
+  }finally{
+
+    button.disabled = false;
+    button.textContent = "Опубликовать";
+  }
+}
+
+
+/* =========================================
+   STORAGE UPLOAD
+========================================= */
+
+async function uploadFile(bucket,path,file){
+
+  const headers = {
+    "apikey":SUPABASE_KEY,
+    "Authorization":"Bearer " + accessToken,
+    "Content-Type":file.type || "application/octet-stream",
+    "x-upsert":"false"
+  };
+
+  const response =
+    await fetch(
+      SUPABASE_URL +
+      "/storage/v1/object/" +
+      encodeURIComponent(bucket) +
+      "/" +
+      path
+        .split("/")
+        .map(encodeURIComponent)
+        .join("/"),
+      {
+        method:"POST",
+        headers,
+        body:file
+      }
+    );
+
+  if(!response.ok){
+
+    let message = "Не удалось загрузить файл";
+
+    try{
+
+      const data =
+        await response.json();
+
+      message =
+        data.message ||
+        data.error ||
+        message;
+
+    }catch{}
+
+    throw new Error(message);
+  }
+}
+
+
+function publicStorageUrl(bucket,path){
+
+  return (
+    SUPABASE_URL +
+    "/storage/v1/object/public/" +
+    encodeURIComponent(bucket) +
+    "/" +
+    path
+      .split("/")
+      .map(encodeURIComponent)
+      .join("/")
+  );
+}
+
+
+/* =========================================
+   ADMIN
+========================================= */
+
+function openAdmin(){
+
+  if(!isAdmin()){
+
+    showToast("Нет доступа");
+    return;
+  }
+
+  goPage("admin");
+}
+
+
+function renderAdmin(){
+
+  if(!isAdmin()) return;
+
+  const list =
+    document.getElementById("adminList");
+
+  const count =
+    document.getElementById("adminCount");
+
+  count.textContent =
+    allApps.length;
+
+  if(!allApps.length){
+
+    list.innerHTML =
+      emptyState("Публикаций пока нет");
+
+    return;
+  }
+
+  list.innerHTML =
+    allApps.map(app=>{
+
+      const icon =
+        app.icon_url ||
+        makePlaceholderIcon(app.name);
+
+      return `
+        <div class="admin-row">
+
+          <img
+            src="${escapeAttr(icon)}"
+            alt=""
+          >
+
+          <div class="admin-row-info">
+            <b>${escapeHtml(app.name)}</b>
+            <span>
+              ${app.type === "game" ? "Игра" : "Приложение"}
+              ·
+              ${escapeHtml(app.version || "1.0.0")}
+            </span>
+          </div>
+
+          <button
+            class="small-danger"
+            onclick="deleteApp(${Number(app.id)})"
+            title="Удалить"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16"/>
+              <path d="M10 11v6M14 11v6"/>
+              <path d="M6 7l1 13h10l1-13"/>
+              <path d="M9 7V4h6v3"/>
+            </svg>
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
+}
+
+
+async function deleteApp(id){
+
+  if(!isAdmin()){
+
+    showToast("Нет доступа");
+    return;
+  }
+
+  const app =
+    allApps.find(x=>Number(x.id) === Number(id));
+
+  if(!app) return;
+
+  const ok =
+    confirm(
+      "Удалить «" +
+      app.name +
+      "» из BlackStore?"
+    );
+
+  if(!ok) return;
+
+  try{
+
+    await sbFetch(
+      "/rest/v1/apps?id=eq." +
+      encodeURIComponent(id),
+      {
+        method:"DELETE"
+      }
+    );
+
+    allApps =
+      allApps.filter(
+        x=>Number(x.id)!==Number(id)
+      );
+
+    updateStats();
+    renderLatest();
+    renderCatalog("app");
+    renderCatalog("game");
+    renderAdmin();
+
+    showToast("Публикация удалена");
+
+  }catch(e){
+
+    showToast(
+      "Ошибка удаления: " +
+      (e.message || "")
+    );
+  }
+}
+
+
+/* =========================================
+   HOME SEARCH
+========================================= */
+
+document.getElementById("homeSearch")
+  .addEventListener("input",function(){
+
+    const q =
+      this.value.trim().toLowerCase();
+
+    if(!q) return;
+
+    const found =
+      allApps.filter(app=>
+        String(app.name || "")
+          .toLowerCase()
+          .includes(q)
+        ||
+        String(app.description || "")
+          .toLowerCase()
+          .includes(q)
+      );
+
+    document.getElementById("latestCount")
+      .textContent = found.length;
+
+    document.getElementById("latestList")
+      .innerHTML =
+      found.length
+        ? found.map(appCard).join("")
+        : emptyState("Ничего не найдено");
+  });
+
+
+document.getElementById("appsSearch")
+  .addEventListener("input",()=>{
+    renderCatalog("app");
+  });
+
+
+document.getElementById("gamesSearch")
+  .addEventListener("input",()=>{
+    renderCatalog("game");
+  });
+
+
+/* =========================================
+   HELPERS
+========================================= */
+
+function closeModal(id){
+
+  document.getElementById(id)
+    .classList.remove("show");
+}
+
+
+function modalOutside(event,id){
+
+  if(event.target.id === id){
+    closeModal(id);
+  }
+}
+
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer =
+    setTimeout(()=>{
+      toast.classList.remove("show");
+    },3500);
+}
+
+
+function formatNumber(value){
+
+  return new Intl.NumberFormat("ru-RU")
+    .format(Number(value || 0));
+}
+
+
+function formatDate(date){
+
+  if(!date) return "—";
+
+  try{
+
+    return new Date(date)
+      .toLocaleDateString(
+        "ru-RU",
+        {
+          day:"2-digit",
+          month:"2-digit",
+          year:"numeric"
+        }
+      );
+
+  }catch{
+
+    return "—";
+  }
+}
+
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+function escapeAttr(value){
+
+  return escapeHtml(value);
+}
+
+
+function safeFileName(name){
+
+  return String(name)
+    .replace(/[^a-zA-Z0-9._-]/g,"_");
+}
+
+
+function makePlaceholderIcon(name){
+
+  const letter =
+    String(name || "B")
+      .trim()
+      .substring(0,1)
+      .toUpperCase();
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+      <rect width="200" height="200" rx="45" fill="#172333"/>
+      <text x="100" y="124"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="90"
+        font-weight="700"
+        fill="#5d96ff">${letter}</text>
+    </svg>
+  `;
+
+  return "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(svg);
+}
+
+
+function emptyState(text){
+
+  return `
+    <div class="empty">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="4" y="4" width="16" height="16" rx="3"/>
+        <path d="M8 9h8M8 13h5"/>
+      </svg>
+
+      <div>${escapeHtml(text)}</div>
+
+    </div>
+  `;
+}
+
+
+function clearAddForm(){
+
+  document.getElementById("addName").value="";
+  document.getElementById("addCategory").value="";
+  document.getElementById("addVersion").value="1.0.0";
+  document.getElementById("addDescription").value="";
+  document.getElementById("iconFile").value="";
+  document.getElementById("apkFile").value="";
+
+  document.getElementById("iconPreview")
+    .style.display="none";
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+async function init(){
+
+  currentUser =
+    await getUser();
+
+  await loadProfile();
+
+  await loadApps();
+}
+
+init();
+
+</script>
+
+</body>
+  </html>
