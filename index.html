@@ -3,26 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#080b10">
-<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#080c12">
 <title>BlackStore</title>
 
 <style>
-:root{
-  --bg:#080b10;
-  --bg2:#0c1118;
-  --card:#111821;
-  --card2:#151e29;
-  --line:#202b38;
-  --text:#f4f7fb;
-  --muted:#8d9aaa;
-  --blue:#1264ff;
-  --blue2:#3180ff;
-  --danger:#ff3b4e;
-  --success:#20c77a;
-  --radius:20px;
-}
-
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
@@ -33,14 +17,14 @@ html,body{
   padding:0;
   width:100%;
   min-height:100%;
-  background:var(--bg);
-  color:var(--text);
+  background:#080c12;
+  color:#fff;
   font-family:Inter,Arial,sans-serif;
 }
 
 body{
   overflow-x:hidden;
-  padding-bottom:82px;
+  padding-bottom:85px;
 }
 
 button,input,textarea,select{
@@ -52,75 +36,59 @@ button{
   cursor:pointer;
 }
 
+.app{
+  width:100%;
+  max-width:720px;
+  margin:auto;
+  min-height:100vh;
+}
+
 .header{
   position:sticky;
   top:0;
   z-index:50;
-  height:66px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 17px;
-  background:rgba(8,11,16,.88);
+  padding:18px 18px 14px;
+  background:rgba(8,12,18,.88);
   backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
 
 .logo{
-  width:39px;
-  height:39px;
-  border-radius:12px;
-  background:linear-gradient(145deg,#111923,#07090d);
-  border:1px solid #263445;
-  display:grid;
-  place-items:center;
-  box-shadow:0 0 25px rgba(18,100,255,.12);
+  width:44px;
+  height:44px;
+  border-radius:13px;
+  background:linear-gradient(145deg,#1264ff,#06368f);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 30px rgba(18,100,255,.28);
 }
 
 .logo svg{
-  width:23px;
-  height:23px;
+  width:25px;
+  height:25px;
 }
 
 .brand-title{
-  font-size:18px;
+  font-size:20px;
   font-weight:800;
   letter-spacing:-.4px;
 }
 
 .brand-sub{
-  color:var(--muted);
-  font-size:10px;
+  color:#788493;
+  font-size:12px;
   margin-top:2px;
 }
 
-.online{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  color:#8e9bab;
-  font-size:11px;
-}
-
-.online-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--success);
-  box-shadow:0 0 9px rgba(32,199,122,.7);
-}
-
 main{
-  width:100%;
-  max-width:900px;
-  margin:auto;
-  padding:16px;
+  padding:18px;
 }
 
 .page{
@@ -133,20 +101,26 @@ main{
 }
 
 @keyframes pageIn{
-  from{opacity:0;transform:translateY(7px)}
-  to{opacity:1;transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .hero{
   position:relative;
   overflow:hidden;
-  border-radius:27px;
-  padding:27px 22px;
-  min-height:220px;
+  padding:25px;
+  border:1px solid rgba(18,100,255,.2);
+  border-radius:25px;
   background:
-    radial-gradient(circle at 85% 15%,rgba(18,100,255,.30),transparent 36%),
-    linear-gradient(145deg,#111a25,#0b1017);
-  border:1px solid #1d2a38;
+    radial-gradient(circle at 90% 10%,rgba(18,100,255,.22),transparent 38%),
+    linear-gradient(145deg,#101722,#0c121a);
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
 }
 
 .hero:after{
@@ -158,423 +132,448 @@ main{
   bottom:-80px;
   border-radius:50%;
   background:rgba(18,100,255,.12);
-  filter:blur(8px);
-}
-
-.hero-label{
-  color:#75a9ff;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
+  filter:blur(15px);
 }
 
 .hero h1{
-  margin:12px 0 9px;
+  position:relative;
+  z-index:2;
+  margin:0;
   font-size:32px;
-  line-height:1.03;
-  letter-spacing:-1.5px;
-  max-width:500px;
+  line-height:1.05;
+  letter-spacing:-1px;
 }
 
 .hero p{
-  color:var(--muted);
-  font-size:13px;
+  position:relative;
+  z-index:2;
+  margin:12px 0 0;
+  color:#8c98a7;
   line-height:1.55;
-  max-width:500px;
-  margin:0;
+  font-size:14px;
 }
 
 .search{
-  margin-top:15px;
+  margin-top:16px;
   position:relative;
-}
-
-.search svg{
-  position:absolute;
-  left:15px;
-  top:50%;
-  transform:translateY(-50%);
-  width:19px;
-  color:#748397;
 }
 
 .search input{
   width:100%;
-  height:51px;
-  border:1px solid var(--line);
-  outline:0;
+  height:52px;
   border-radius:16px;
-  background:#0e141c;
-  color:var(--text);
-  padding:0 15px 0 46px;
+  border:1px solid #202b39;
+  background:#101721;
+  color:#fff;
+  outline:none;
+  padding:0 17px 0 48px;
 }
 
 .search input:focus{
-  border-color:#245fae;
-  box-shadow:0 0 0 3px rgba(18,100,255,.08);
+  border-color:#1264ff;
+  box-shadow:0 0 0 3px rgba(18,100,255,.1);
 }
 
-.section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin:24px 2px 12px;
-}
-
-.section-head h2{
-  font-size:18px;
-  margin:0;
-}
-
-.section-head span{
-  color:var(--muted);
-  font-size:11px;
-}
-
-.quick-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.search svg{
+  position:absolute;
+  left:17px;
+  top:16px;
+  width:20px;
+  height:20px;
+  color:#718092;
 }
 
 .quick{
-  min-height:116px;
-  border:1px solid var(--line);
-  background:var(--card);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:14px;
+}
+
+.quick-btn{
+  min-height:86px;
+  padding:16px;
   border-radius:19px;
-  padding:18px;
   text-align:left;
-  color:var(--text);
+  background:#101721;
+  border:1px solid #202b39;
+  color:#fff;
   transition:.18s;
 }
 
-.quick:active{
+.quick-btn:active{
   transform:scale(.97);
 }
 
 .quick-icon{
-  width:39px;
-  height:39px;
-  display:grid;
-  place-items:center;
-  background:#162334;
-  border-radius:13px;
-  margin-bottom:14px;
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#162c53;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#4d91ff;
+  margin-bottom:10px;
 }
 
 .quick-icon svg{
-  width:21px;
+  width:19px;
+  height:19px;
 }
 
-.quick strong{
-  display:block;
+.quick-title{
+  font-weight:700;
   font-size:14px;
 }
 
-.quick small{
-  display:block;
-  color:var(--muted);
-  margin-top:4px;
+.quick-sub{
+  color:#6f7c8c;
+  font-size:11px;
+  margin-top:3px;
 }
 
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:9px;
-  margin-top:13px;
+  gap:10px;
+  margin-top:14px;
 }
 
 .stat{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:15px 8px;
+  background:#0e151e;
+  border:1px solid #1d2733;
+  border-radius:17px;
+  padding:15px 10px;
   text-align:center;
 }
 
-.stat b{
+.stat strong{
   display:block;
-  font-size:20px;
+  font-size:21px;
 }
 
 .stat span{
-  color:var(--muted);
-  font-size:10px;
-  margin-top:4px;
   display:block;
+  color:#718092;
+  font-size:10px;
+  margin-top:3px;
 }
 
-.catalog-title{
-  margin-top:4px;
-}
-
-.catalog-list{
-  display:grid;
-  gap:11px;
-}
-
-.app-card{
+.section-head{
   display:flex;
+  justify-content:space-between;
   align-items:center;
+  margin:25px 2px 12px;
+}
+
+.section-head h2{
+  font-size:19px;
+  margin:0;
+}
+
+.section-head span{
+  color:#657282;
+  font-size:12px;
+}
+
+.catalog{
+  display:grid;
+  gap:10px;
+}
+
+.card{
+  display:flex;
   gap:13px;
-  padding:12px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
+  align-items:center;
+  padding:13px;
+  border:1px solid #1d2733;
+  background:#101721;
+  border-radius:19px;
   transition:.18s;
 }
 
-.app-card:active{
+.card:active{
   transform:scale(.985);
 }
 
-.app-icon{
+.icon{
   width:62px;
   height:62px;
   flex:none;
-  border-radius:17px;
-  background:#18212d;
-  border:1px solid #273545;
+  border-radius:16px;
+  background:#172131;
   object-fit:cover;
-  display:block;
 }
 
-.app-info{
+.card-info{
   min-width:0;
   flex:1;
 }
 
-.app-name{
-  font-size:15px;
+.card-name{
   font-weight:750;
+  font-size:15px;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
 }
 
-.app-desc{
-  color:var(--muted);
+.card-desc{
+  color:#788594;
   font-size:11px;
-  line-height:1.4;
-  margin-top:4px;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
+  margin-top:5px;
+  white-space:nowrap;
   overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-.app-meta{
-  color:#6f7e8f;
-  font-size:10px;
+.card-meta{
+  display:flex;
+  gap:8px;
   margin-top:7px;
+  color:#566474;
+  font-size:10px;
 }
 
-.card-arrow{
-  width:32px;
-  height:32px;
-  border-radius:11px;
-  display:grid;
-  place-items:center;
-  background:#182231;
-  color:#9aabc0;
+.open-btn{
+  width:38px;
+  height:38px;
+  flex:none;
+  border-radius:12px;
+  background:#1264ff;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.open-btn svg{
+  width:18px;
+  height:18px;
 }
 
 .empty{
+  padding:35px 18px;
   text-align:center;
-  padding:42px 20px;
-  color:var(--muted);
-  border:1px dashed #27313d;
+  border:1px dashed #263241;
   border-radius:18px;
+  color:#687586;
 }
 
-.empty svg{
-  width:36px;
-  margin-bottom:10px;
-  opacity:.7;
-}
-
-.form-card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:21px;
-  padding:18px;
-  margin-top:14px;
-}
-
-.form-title{
-  font-size:19px;
-  font-weight:800;
-  margin-bottom:4px;
-}
-
-.form-sub{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:18px;
-}
-
-.field{
-  margin-bottom:13px;
-}
-
-.field label{
+.empty strong{
   display:block;
-  font-size:11px;
-  color:#9eabb9;
-  margin-bottom:7px;
+  color:#aeb8c4;
+  margin-bottom:6px;
 }
 
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  border:1px solid var(--line);
-  background:#0d131a;
-  color:var(--text);
-  outline:0;
-  border-radius:14px;
-  padding:13px;
-}
-
-.field input{
-  height:47px;
-}
-
-.field textarea{
-  min-height:105px;
-  resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:#245fae;
-}
-
-.file-box{
-  border:1px dashed #304052;
-  border-radius:16px;
-  padding:17px;
-  text-align:center;
-  background:#0d131a;
-  margin-bottom:13px;
-}
-
-.file-box input{
-  width:100%;
-}
-
-.preview{
-  width:78px;
-  height:78px;
-  object-fit:cover;
-  border-radius:20px;
-  margin:0 auto 10px;
-  display:none;
-  border:1px solid #304052;
-}
-
-.btn{
-  width:100%;
-  min-height:48px;
-  border-radius:14px;
-  background:var(--blue);
-  color:#fff;
-  font-weight:750;
-  margin-top:5px;
-}
-
-.btn:active{
-  transform:scale(.98);
-}
-
-.btn.secondary{
-  background:#18222e;
-  border:1px solid #273545;
-  color:#e9eef5;
-}
-
-.btn.danger{
-  background:rgba(255,59,78,.12);
-  color:#ff6978;
-  border:1px solid rgba(255,59,78,.24);
-}
-
-.profile{
-  text-align:center;
+.profile-box{
+  padding:24px;
+  border-radius:24px;
+  background:linear-gradient(145deg,#101822,#0c1219);
+  border:1px solid #202b39;
 }
 
 .profile-avatar{
-  width:84px;
-  height:84px;
-  margin:12px auto;
-  border-radius:27px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(145deg,#16263a,#0d141d);
-  border:1px solid #2a3c51;
-  font-size:30px;
-  font-weight:800;
+  width:70px;
+  height:70px;
+  border-radius:22px;
+  background:#1264ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:15px;
+  box-shadow:0 10px 30px rgba(18,100,255,.25);
+}
+
+.profile-avatar svg{
+  width:32px;
+  height:32px;
 }
 
 .profile-name{
-  font-size:21px;
+  font-size:23px;
   font-weight:800;
 }
 
-.profile-email{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:5px;
-  word-break:break-all;
-}
-
-.profile-actions{
-  display:grid;
-  gap:10px;
-  margin-top:22px;
+.profile-status{
+  color:#728091;
+  font-size:13px;
+  margin-top:4px;
 }
 
 .admin-badge{
   display:inline-flex;
   align-items:center;
   gap:6px;
-  margin-top:9px;
-  padding:6px 10px;
-  border-radius:9px;
-  color:#73a7ff;
-  background:rgba(18,100,255,.10);
-  border:1px solid rgba(18,100,255,.20);
-  font-size:10px;
+  margin-top:13px;
+  padding:7px 10px;
+  border-radius:10px;
+  color:#68a0ff;
+  background:rgba(18,100,255,.12);
+  border:1px solid rgba(18,100,255,.2);
+  font-size:11px;
   font-weight:700;
+}
+
+.profile-actions{
+  display:grid;
+  gap:10px;
+  margin-top:20px;
+}
+
+.primary-btn,
+.secondary-btn,
+.danger-btn{
+  width:100%;
+  min-height:50px;
+  border-radius:15px;
+  font-weight:700;
+}
+
+.primary-btn{
+  color:#fff;
+  background:#1264ff;
+}
+
+.secondary-btn{
+  color:#dce5f1;
+  background:#151e29;
+  border:1px solid #273343;
+}
+
+.danger-btn{
+  color:#ff8585;
+  background:#241517;
+  border:1px solid #432124;
+}
+
+.admin-form{
+  display:grid;
+  gap:11px;
+}
+
+.field{
+  width:100%;
+  background:#0e151e;
+  border:1px solid #273342;
+  color:#fff;
+  border-radius:14px;
+  padding:14px;
+  outline:none;
+}
+
+textarea.field{
+  min-height:100px;
+  resize:vertical;
+}
+
+.field:focus{
+  border-color:#1264ff;
+}
+
+.type-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.type-option{
+  min-height:48px;
+  border-radius:14px;
+  background:#101721;
+  border:1px solid #273342;
+  color:#8794a3;
+  font-weight:700;
+}
+
+.type-option.selected{
+  color:#fff;
+  border-color:#1264ff;
+  background:rgba(18,100,255,.14);
+}
+
+.admin-item{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:12px;
+  background:#101721;
+  border:1px solid #202b39;
+  border-radius:17px;
+  margin-top:10px;
+}
+
+.admin-item .icon{
+  width:52px;
+  height:52px;
+}
+
+.admin-item-info{
+  flex:1;
+  min-width:0;
+}
+
+.admin-item-name{
+  font-weight:700;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.admin-item-type{
+  color:#687789;
+  font-size:10px;
+  margin-top:4px;
+}
+
+.delete-btn{
+  width:39px;
+  height:39px;
+  border-radius:12px;
+  background:#2b1519;
+  color:#ff6e75;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.delete-btn svg{
+  width:18px;
+  height:18px;
 }
 
 .bottom-nav{
   position:fixed;
   z-index:100;
-  left:0;
-  right:0;
   bottom:0;
-  height:76px;
-  padding:7px 8px 9px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:720px;
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  background:rgba(8,12,18,.94);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.07);
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  background:rgba(9,13,18,.94);
-  backdrop-filter:blur(20px);
-  border-top:1px solid rgba(255,255,255,.06);
 }
 
 .nav-btn{
   background:none;
-  color:#687789;
+  color:#687687;
+  min-height:57px;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  gap:4px;
+  align-items:center;
+  gap:5px;
   border-radius:14px;
+}
+
+.nav-btn.active{
+  color:#4e92ff;
+  background:rgba(18,100,255,.08);
 }
 
 .nav-btn svg{
@@ -583,44 +582,47 @@ main{
 }
 
 .nav-btn span{
-  font-size:9px;
-}
-
-.nav-btn.active{
-  color:#fff;
-  background:rgba(18,100,255,.10);
-}
-
-.modal-bg{
-  position:fixed;
-  z-index:200;
-  inset:0;
-  background:rgba(0,0,0,.72);
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-  backdrop-filter:blur(7px);
-}
-
-.modal-bg.show{
-  display:flex;
+  font-size:10px;
+  font-weight:650;
 }
 
 .modal{
+  position:fixed;
+  z-index:200;
+  inset:0;
+  display:none;
+  align-items:flex-end;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(7px);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
   width:100%;
-  max-width:650px;
-  max-height:91vh;
-  overflow:auto;
-  background:#0d131b;
-  border:1px solid #24303d;
-  border-radius:25px 25px 0 0;
+  max-width:720px;
+  margin:auto auto 0;
+  background:#0d141d;
+  border:1px solid #263241;
+  border-bottom:0;
+  border-radius:27px 27px 0 0;
   padding:20px;
-  animation:modalIn .22s ease;
+  max-height:90vh;
+  overflow-y:auto;
+  animation:modalIn .2s ease;
 }
 
 @keyframes modalIn{
-  from{transform:translateY(40px);opacity:0}
-  to{transform:translateY(0);opacity:1}
+  from{
+    transform:translateY(50px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
 }
 
 .modal-top{
@@ -630,22 +632,33 @@ main{
   margin-bottom:17px;
 }
 
+.modal-title{
+  font-size:20px;
+  font-weight:800;
+}
+
 .close{
-  width:35px;
-  height:35px;
-  border-radius:11px;
-  background:#17202a;
-  color:#aab7c5;
-  display:grid;
-  place-items:center;
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#17202b;
+  color:#8996a5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.close svg{
+  width:19px;
+  height:19px;
 }
 
 .detail-icon{
-  width:94px;
-  height:94px;
-  border-radius:25px;
+  width:88px;
+  height:88px;
+  border-radius:23px;
   object-fit:cover;
-  border:1px solid #2c3c4e;
+  background:#172131;
   display:block;
   margin-bottom:14px;
 }
@@ -653,81 +666,72 @@ main{
 .detail-name{
   font-size:25px;
   font-weight:850;
-  letter-spacing:-.8px;
-}
-
-.detail-type{
-  display:inline-block;
-  color:#76a9ff;
-  font-size:10px;
-  margin-top:7px;
 }
 
 .detail-desc{
-  color:#a2afbd;
-  line-height:1.6;
+  color:#8995a4;
   font-size:13px;
+  line-height:1.6;
+  margin-top:10px;
   white-space:pre-wrap;
-  margin:16px 0;
 }
 
 .detail-info{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:9px;
-  margin-bottom:15px;
+  margin-top:17px;
 }
 
 .detail-box{
-  padding:13px;
+  background:#111a24;
+  border:1px solid #222d3a;
   border-radius:14px;
-  background:#121a23;
-  border:1px solid #202c38;
+  padding:12px;
 }
 
 .detail-box span{
   display:block;
-  color:#728193;
-  font-size:9px;
+  color:#657384;
+  font-size:10px;
 }
 
-.detail-box b{
+.detail-box strong{
   display:block;
-  font-size:12px;
-  margin-top:5px;
+  margin-top:4px;
+  font-size:13px;
 }
 
 .toast{
   position:fixed;
   z-index:500;
-  left:15px;
-  right:15px;
-  bottom:91px;
+  left:50%;
+  bottom:95px;
+  transform:translateX(-50%) translateY(20px);
+  width:calc(100% - 32px);
+  max-width:500px;
   padding:14px 16px;
-  background:#161e28;
-  border:1px solid #2a3746;
-  border-radius:14px;
+  border-radius:15px;
+  background:#151e28;
+  border:1px solid #2a3747;
   color:#fff;
-  font-size:12px;
-  display:none;
-  box-shadow:0 15px 50px rgba(0,0,0,.35);
+  font-size:13px;
+  text-align:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.22s;
 }
 
 .toast.show{
-  display:block;
-  animation:toastIn .2s ease;
-}
-
-@keyframes toastIn{
-  from{transform:translateY(10px);opacity:0}
-  to{transform:translateY(0);opacity:1}
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
 }
 
 .loader{
   width:25px;
   height:25px;
   border:3px solid #253344;
-  border-top-color:var(--blue);
+  border-top-color:#1264ff;
   border-radius:50%;
   animation:spin .7s linear infinite;
   margin:20px auto;
@@ -737,320 +741,288 @@ main{
   to{transform:rotate(360deg)}
 }
 
-.admin-list{
-  display:grid;
-  gap:9px;
-}
-
-.admin-row{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  padding:10px;
-  background:#121a23;
-  border:1px solid #222e3a;
-  border-radius:15px;
-}
-
-.admin-row img{
-  width:48px;
-  height:48px;
-  object-fit:cover;
-  border-radius:13px;
-  background:#18222d;
-}
-
-.admin-row-info{
-  min-width:0;
-  flex:1;
-}
-
-.admin-row-info b{
-  font-size:13px;
-  display:block;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.admin-row-info span{
-  color:var(--muted);
-  font-size:10px;
-}
-
-.small-danger{
-  width:38px;
-  height:38px;
-  flex:none;
-  border-radius:11px;
-  background:rgba(255,59,78,.1);
-  color:#ff6373;
-  display:grid;
-  place-items:center;
-}
-
-.small-danger svg{
-  width:17px;
-}
-
 .hidden{
   display:none!important;
 }
 
-@media(min-width:700px){
-  .bottom-nav{
-    left:50%;
-    right:auto;
-    width:650px;
-    transform:translateX(-50%);
-    border:1px solid #202c38;
-    border-bottom:0;
-    border-radius:20px 20px 0 0;
-  }
+.small-note{
+  color:#697687;
+  font-size:11px;
+  line-height:1.5;
+}
 
-  .modal-bg{
-    align-items:center;
-  }
+.admin-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
 
-  .modal{
-    border-radius:25px;
-    max-height:85vh;
-  }
+.admin-header h2{
+  margin:0;
+  font-size:21px;
+}
+
+.admin-add{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  background:#1264ff;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.admin-add svg{
+  width:20px;
+  height:20px;
+}
+
+.file-label{
+  display:block;
+  padding:15px;
+  border:1px dashed #334154;
+  border-radius:14px;
+  color:#8190a0;
+  background:#0e151e;
+  text-align:center;
+  font-size:12px;
+}
+
+.file-label input{
+  display:none;
 }
 </style>
 </head>
 
 <body>
 
+<div class="app">
+
 <header class="header">
   <div class="brand">
     <div class="logo">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 5h16v14H4z"/>
-        <path d="M8 9h8M8 13h5"/>
+        <rect x="5" y="3" width="14" height="18" rx="3"/>
+        <path d="M9 7h6M9 11h6M9 15h3"/>
       </svg>
     </div>
+
     <div>
       <div class="brand-title">BlackStore</div>
       <div class="brand-sub">Applications & Games</div>
     </div>
   </div>
-
-  <div class="online">
-    <span class="online-dot"></span>
-    Online
-  </div>
 </header>
 
 <main>
 
-  <!-- HOME -->
-  <section id="homePage" class="page active">
+<!-- HOME -->
+<section id="page-home" class="page active">
 
-    <div class="hero">
-      <div class="hero-label">BLACKSTORE</div>
-      <h1>Приложения и игры в одном месте.</h1>
-      <p>
-        Каталог Android-приложений и игр.
-        Выбирай, открывай страницу и скачивай APK прямо на телефон.
-      </p>
+  <div class="hero">
+    <h1>BlackStore</h1>
+    <p>
+      Приложения и игры для Android.
+      Открывай каталог, находи нужное приложение и скачивай APK прямо на телефон.
+    </p>
+  </div>
+
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
+    </svg>
+    <input id="homeSearch" type="search" placeholder="Поиск приложений и игр">
+  </div>
+
+  <div class="quick">
+
+    <button class="quick-btn" onclick="openPage('apps')">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="3" width="14" height="18" rx="3"/>
+          <path d="M9 7h6M9 11h6M9 15h3"/>
+        </svg>
+      </div>
+      <div class="quick-title">Приложения</div>
+      <div class="quick-sub">Весь каталог</div>
+    </button>
+
+    <button class="quick-btn" onclick="openPage('games')">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 8h10a5 5 0 0 1 4 8l-1.2 1.6a2 2 0 0 1-3.2-.1L15 15H9l-1.6 2.5a2 2 0 0 1-3.2.1L3 16a5 5 0 0 1 4-8Z"/>
+          <path d="M8 11v4M6 13h4M16 12h.01M18 14h.01"/>
+        </svg>
+      </div>
+      <div class="quick-title">Игры</div>
+      <div class="quick-sub">Игровой каталог</div>
+    </button>
+
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="statApps">0</strong>
+      <span>Приложений</span>
     </div>
 
-    <div class="search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="7"/>
-        <path d="m20 20-4-4"/>
+    <div class="stat">
+      <strong id="statGames">0</strong>
+      <span>Игр</span>
+    </div>
+
+    <div class="stat">
+      <strong id="statDownloads">0</strong>
+      <span>Скачиваний</span>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Последние публикации</h2>
+    <span id="latestCount">0</span>
+  </div>
+
+  <div id="latestCatalog" class="catalog"></div>
+
+</section>
+
+
+<!-- APPS -->
+<section id="page-apps" class="page">
+
+  <div class="section-head">
+    <h2>Приложения</h2>
+    <span id="appsCount">0</span>
+  </div>
+
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
+    </svg>
+    <input id="appsSearch" type="search" placeholder="Поиск приложений">
+  </div>
+
+  <div id="appsCatalog" class="catalog" style="margin-top:14px"></div>
+
+</section>
+
+
+<!-- GAMES -->
+<section id="page-games" class="page">
+
+  <div class="section-head">
+    <h2>Игры</h2>
+    <span id="gamesCount">0</span>
+  </div>
+
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
+    </svg>
+    <input id="gamesSearch" type="search" placeholder="Поиск игр">
+  </div>
+
+  <div id="gamesCatalog" class="catalog" style="margin-top:14px"></div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="page-profile" class="page">
+
+  <div class="section-head">
+    <h2>Профиль</h2>
+  </div>
+
+  <div id="guestProfile" class="profile-box">
+
+    <div class="profile-avatar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="8" r="3.5"/>
+        <path d="M5 20c.7-4 3.1-6 7-6s6.3 2 7 6"/>
       </svg>
-      <input id="homeSearch" placeholder="Поиск приложений и игр..." autocomplete="off">
     </div>
 
-    <div class="quick-grid">
-      <button class="quick" onclick="goPage('apps')">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="4" y="4" width="6" height="6" rx="1"/>
-            <rect x="14" y="4" width="6" height="6" rx="1"/>
-            <rect x="4" y="14" width="6" height="6" rx="1"/>
-            <rect x="14" y="14" width="6" height="6" rx="1"/>
-          </svg>
-        </div>
-        <strong>Приложения</strong>
-        <small>Весь каталог</small>
+    <div class="profile-name">Пользователь</div>
+    <div class="profile-status">Гость BlackStore</div>
+
+    <div class="small-note" style="margin-top:15px">
+      Вы можете пользоваться BlackStore без регистрации:
+      просматривать приложения, игры и скачивать APK.
+    </div>
+
+    <div class="profile-actions">
+      <button class="secondary-btn" onclick="openAdminLogin()">
+        Вход администратора
+      </button>
+    </div>
+
+  </div>
+
+
+  <div id="adminProfile" class="profile-box hidden">
+
+    <div class="profile-avatar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M12 3l7 3v5c0 4.7-3 8-7 10-4-2-7-5.3-7-10V6l7-3Z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+    </div>
+
+    <div class="profile-name">BlackStore</div>
+    <div class="profile-status">Администратор</div>
+
+    <div class="admin-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 3l7 3v5c0 4.7-3 8-7 10-4-2-7-5.3-7-10V6l7-3Z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+      ADMIN
+    </div>
+
+    <div class="profile-actions">
+
+      <button class="primary-btn" onclick="openAdminPage()">
+        Открыть админ-панель
       </button>
 
-      <button class="quick" onclick="goPage('games')">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M7 8h10a5 5 0 0 1 4.7 6.7l-1.2 3.1a2 2 0 0 1-3.5.5l-2-2.3H9l-2 2.3a2 2 0 0 1-3.5-.5l-1.2-3.1A5 5 0 0 1 7 8Z"/>
-            <path d="M8 11v4M6 13h4M16 12h.01M19 14h.01"/>
-          </svg>
-        </div>
-        <strong>Игры</strong>
-        <small>Игровой каталог</small>
-      </button>
-    </div>
-
-    <div class="stats">
-      <div class="stat">
-        <b id="statApps">0</b>
-        <span>Приложений</span>
-      </div>
-      <div class="stat">
-        <b id="statGames">0</b>
-        <span>Игр</span>
-      </div>
-      <div class="stat">
-        <b id="statDownloads">0</b>
-        <span>Скачиваний</span>
-      </div>
-    </div>
-
-    <div class="section-head">
-      <h2>Последние публикации</h2>
-      <span id="latestCount">0</span>
-    </div>
-
-    <div id="latestList" class="catalog-list">
-      <div class="loader"></div>
-    </div>
-
-  </section>
-
-
-  <!-- APPS -->
-  <section id="appsPage" class="page">
-
-    <div class="section-head catalog-title">
-      <h2>Приложения</h2>
-      <span id="appsCount">0</span>
-    </div>
-
-    <div class="search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="7"/>
-        <path d="m20 20-4-4"/>
-      </svg>
-      <input id="appsSearch" placeholder="Поиск приложений..." autocomplete="off">
-    </div>
-
-    <div id="appsList" class="catalog-list" style="margin-top:14px">
-      <div class="loader"></div>
-    </div>
-
-  </section>
-
-
-  <!-- GAMES -->
-  <section id="gamesPage" class="page">
-
-    <div class="section-head catalog-title">
-      <h2>Игры</h2>
-      <span id="gamesCount">0</span>
-    </div>
-
-    <div class="search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="7"/>
-        <path d="m20 20-4-4"/>
-      </svg>
-      <input id="gamesSearch" placeholder="Поиск игр..." autocomplete="off">
-    </div>
-
-    <div id="gamesList" class="catalog-list" style="margin-top:14px">
-      <div class="loader"></div>
-    </div>
-
-  </section>
-
-
-  <!-- PROFILE -->
-  <section id="profilePage" class="page">
-
-    <div id="profileLoggedOut">
-
-      <div class="form-card">
-        <div class="profile-avatar">B</div>
-        <div class="form-title" style="text-align:center">BlackStore</div>
-        <div class="form-sub" style="text-align:center">
-          Войдите или зарегистрируйтесь, чтобы получить доступ к профилю.
-        </div>
-
-        <div class="profile-actions">
-          <button class="btn" onclick="openAuth('login')">Войти</button>
-          <button class="btn secondary" onclick="openAuth('register')">Регистрация</button>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div id="profileLoggedIn" class="hidden">
-
-      <div class="form-card profile">
-
-        <div class="profile-avatar" id="profileAvatar">B</div>
-
-        <div class="profile-name" id="profileName">Пользователь</div>
-
-        <div class="profile-email" id="profileEmail"></div>
-
-        <div id="adminBadge" class="admin-badge hidden">
-          ADMIN
-        </div>
-
-        <div class="profile-actions">
-
-          <button id="adminButton" class="btn hidden" onclick="openAdmin()">
-            Админ-панель
-          </button>
-
-          <button id="addButton" class="btn secondary hidden" onclick="openAddApp()">
-            Добавить приложение / игру
-          </button>
-
-          <button class="btn danger" onclick="logout()">
-            Выйти
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ADMIN -->
-  <section id="adminPage" class="page">
-
-    <div class="section-head">
-      <h2>Админ-панель</h2>
-      <span>BlackStore</span>
-    </div>
-
-    <div class="form-card">
-
-      <div class="form-title">Управление каталогом</div>
-
-      <div class="form-sub">
-        Только аккаунт администратора может публиковать, изменять и удалять приложения и игры.
-      </div>
-
-      <button class="btn" onclick="openAddApp()">
-        Добавить приложение / игру
+      <button class="danger-btn" onclick="adminLogout()">
+        Выйти
       </button>
 
     </div>
 
-    <div class="section-head">
-      <h2>Публикации</h2>
-      <span id="adminCount">0</span>
-    </div>
+  </div>
 
-    <div id="adminList" class="admin-list"></div>
+</section>
 
-  </section>
+
+<!-- ADMIN -->
+<section id="page-admin" class="page">
+
+  <div class="admin-header">
+    <h2>Админ-панель</h2>
+
+    <button class="admin-add" onclick="openAddModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="small-note">
+    Только администратор может публиковать и удалять приложения и игры.
+  </div>
+
+  <div id="adminCatalog" style="margin-top:15px"></div>
+
+</section>
 
 </main>
 
@@ -1058,199 +1030,197 @@ main{
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
 
-  <button class="nav-btn active" data-page="home" onclick="goPage('home')">
+  <button class="nav-btn active" data-page="home" onclick="openPage('home')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="m3 11 9-8 9 8"/>
       <path d="M5 10v10h14V10"/>
-      <path d="M9 20v-6h6v6"/>
     </svg>
     <span>Главная</span>
   </button>
 
-  <button class="nav-btn" data-page="apps" onclick="goPage('apps')">
+  <button class="nav-btn" data-page="apps" onclick="openPage('apps')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="4" y="4" width="6" height="6" rx="1"/>
-      <rect x="14" y="4" width="6" height="6" rx="1"/>
-      <rect x="4" y="14" width="6" height="6" rx="1"/>
-      <rect x="14" y="14" width="6" height="6" rx="1"/>
+      <rect x="5" y="3" width="14" height="18" rx="3"/>
+      <path d="M9 7h6M9 11h6M9 15h3"/>
     </svg>
     <span>Приложения</span>
   </button>
 
-  <button class="nav-btn" data-page="games" onclick="goPage('games')">
+  <button class="nav-btn" data-page="games" onclick="openPage('games')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M7 8h10a5 5 0 0 1 4.7 6.7l-1.2 3.1a2 2 0 0 1-3.5.5l-2-2.3H9l-2 2.3a2 2 0 0 1-3.5-.5l-1.2-3.1A5 5 0 0 1 7 8Z"/>
-      <path d="M8 11v4M6 13h4M16 12h.01M19 14h.01"/>
+      <path d="M7 8h10a5 5 0 0 1 4 8l-1.2 1.6a2 2 0 0 1-3.2-.1L15 15H9l-1.6 2.5a2 2 0 0 1-3.2.1L3 16a5 5 0 0 1 4-8Z"/>
+      <path d="M8 11v4M6 13h4M16 12h.01M18 14h.01"/>
     </svg>
     <span>Игры</span>
   </button>
 
-  <button class="nav-btn" data-page="profile" onclick="goPage('profile')">
+  <button class="nav-btn" data-page="profile" onclick="openPage('profile')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="8" r="4"/>
-      <path d="M4 21a8 8 0 0 1 16 0"/>
+      <circle cx="12" cy="8" r="3.5"/>
+      <path d="M5 20c.7-4 3.1-6 7-6s6.3 2 7 6"/>
     </svg>
     <span>Профиль</span>
   </button>
 
 </nav>
 
+</div>
 
-<!-- AUTH MODAL -->
-<div id="authModal" class="modal-bg" onclick="modalOutside(event,'authModal')">
 
-  <div class="modal">
+<!-- ADMIN LOGIN MODAL -->
+<div id="adminLoginModal" class="modal">
+
+  <div class="modal-box">
 
     <div class="modal-top">
-      <strong id="authTitle">Вход</strong>
+      <div class="modal-title">Вход администратора</div>
 
-      <button class="close" onclick="closeModal('authModal')">
+      <button class="close" onclick="closeModal('adminLoginModal')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="m6 6 12 12M18 6 6 18"/>
         </svg>
       </button>
     </div>
 
-    <div id="registerUsernameField" class="field hidden">
-      <label>Имя пользователя</label>
-      <input id="registerUsername" placeholder="Например: Salomat">
-    </div>
+    <div class="admin-form">
 
-    <div class="field">
-      <label>Email</label>
-      <input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email">
-    </div>
+      <input
+        id="adminLogin"
+        class="field"
+        type="text"
+        placeholder="Логин"
+        autocomplete="username"
+      >
 
-    <div class="field">
-      <label>Пароль</label>
-      <input id="authPassword" type="password" placeholder="Пароль" autocomplete="current-password">
-    </div>
+      <input
+        id="adminPassword"
+        class="field"
+        type="password"
+        placeholder="Пароль"
+        autocomplete="current-password"
+      >
 
-    <button id="authSubmit" class="btn" onclick="submitAuth()">Войти</button>
-
-    <button id="authSwitch" class="btn secondary" onclick="switchAuthMode()">
-      Создать аккаунт
-    </button>
-
-  </div>
-</div>
-
-
-<!-- APP DETAIL MODAL -->
-<div id="detailModal" class="modal-bg" onclick="modalOutside(event,'detailModal')">
-
-  <div class="modal">
-
-    <div class="modal-top">
-      <strong>Информация</strong>
-
-      <button class="close" onclick="closeModal('detailModal')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m6 6 12 12M18 6 6 18"/>
-        </svg>
+      <button class="primary-btn" id="adminLoginBtn" onclick="adminLogin()">
+        Войти
       </button>
+
     </div>
-
-    <img id="detailIcon" class="detail-icon" src="" alt="">
-
-    <div id="detailName" class="detail-name"></div>
-    <div id="detailType" class="detail-type"></div>
-
-    <div id="detailDesc" class="detail-desc"></div>
-
-    <div class="detail-info">
-      <div class="detail-box">
-        <span>Версия</span>
-        <b id="detailVersion">—</b>
-      </div>
-
-      <div class="detail-box">
-        <span>Скачивания</span>
-        <b id="detailDownloads">0</b>
-      </div>
-
-      <div class="detail-box">
-        <span>Категория</span>
-        <b id="detailCategory">—</b>
-      </div>
-
-      <div class="detail-box">
-        <span>Дата</span>
-        <b id="detailDate">—</b>
-      </div>
-    </div>
-
-    <button id="downloadButton" class="btn">
-      Скачать APK
-    </button>
 
   </div>
+
 </div>
 
 
-<!-- ADD MODAL -->
-<div id="addModal" class="modal-bg" onclick="modalOutside(event,'addModal')">
+<!-- ADD APP MODAL -->
+<div id="addModal" class="modal">
 
-  <div class="modal">
+  <div class="modal-box">
 
     <div class="modal-top">
-      <strong>Добавить публикацию</strong>
+
+      <div class="modal-title">Новая публикация</div>
 
       <button class="close" onclick="closeModal('addModal')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="m6 6 12 12M18 6 6 18"/>
         </svg>
       </button>
+
     </div>
 
-    <div class="form-sub">
-      Заполни данные и загрузи APK. Публикация появится в каталоге после успешной загрузки.
-    </div>
+    <div class="admin-form">
 
-    <div class="field">
-      <label>Название</label>
-      <input id="addName" placeholder="Название приложения или игры">
-    </div>
+      <input
+        id="appName"
+        class="field"
+        type="text"
+        placeholder="Название"
+      >
 
-    <div class="field">
-      <label>Тип</label>
-      <select id="addType">
-        <option value="app">Приложение</option>
-        <option value="game">Игра</option>
-      </select>
-    </div>
+      <textarea
+        id="appDescription"
+        class="field"
+        placeholder="Описание"
+      ></textarea>
 
-    <div class="field">
-      <label>Категория</label>
-      <input id="addCategory" placeholder="Например: Инструменты">
-    </div>
+      <input
+        id="appVersion"
+        class="field"
+        type="text"
+        placeholder="Версия, например 1.0.0"
+        value="1.0.0"
+      >
 
-    <div class="field">
-      <label>Версия</label>
-      <input id="addVersion" value="1.0.0" placeholder="1.0.0">
-    </div>
+      <input
+        id="appCategory"
+        class="field"
+        type="text"
+        placeholder="Категория"
+        value="Другое"
+      >
 
-    <div class="field">
-      <label>Описание</label>
-      <textarea id="addDescription" placeholder="Описание приложения..."></textarea>
-    </div>
+      <div class="type-row">
 
-    <div class="file-box">
-      <img id="iconPreview" class="preview" alt="">
-      <div style="font-size:12px;margin-bottom:9px">Иконка</div>
-      <input id="iconFile" type="file" accept="image/*">
-    </div>
+        <button
+          id="typeApp"
+          class="type-option selected"
+          onclick="selectType('app')"
+        >
+          Приложение
+        </button>
 
-    <div class="file-box">
-      <div style="font-size:12px;margin-bottom:9px">APK-файл</div>
-      <input id="apkFile" type="file" accept=".apk,application/vnd.android.package-archive">
-    </div>
+        <button
+          id="typeGame"
+          class="type-option"
+          onclick="selectType('game')"
+        >
+          Игра
+        </button>
 
-    <button id="publishButton" class="btn" onclick="publishApp()">
-      Опубликовать
-    </button>
+      </div>
+
+      <label class="file-label">
+        Выбрать иконку
+        <input id="appIcon" type="file" accept="image/*">
+      </label>
+
+      <label class="file-label">
+        Выбрать APK
+        <input id="appApk" type="file" accept=".apk,application/vnd.android.package-archive">
+      </label>
+
+      <button class="primary-btn" id="publishBtn" onclick="publishApp()">
+        Опубликовать
+      </button>
+
+    </div>
 
   </div>
+
+</div>
+
+
+<!-- DETAIL MODAL -->
+<div id="detailModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-top">
+
+      <div class="modal-title">Информация</div>
+
+      <button class="close" onclick="closeModal('detailModal')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <div id="detailContent"></div>
+
+  </div>
+
 </div>
 
 
@@ -1258,29 +1228,35 @@ main{
 
 
 <script>
-/* =========================================
-   BLACKSTORE SUPABASE
-========================================= */
+/* =========================
+   SUPABASE
+========================= */
 
-const SUPABASE_URL = "https://oygljkiyukqorevrnkja.supabase.co";
-const SUPABASE_KEY = "sb_publishable_U8AtOrufsfgCO_wH0x1D_w_nSNqRyS9";
+const SUPABASE_URL =
+  "https://oygljkiyukqorevrnkja.supabase.co";
 
-const FILE_BUCKET = "blackstore-files";
-const IMAGE_BUCKET = "blackstore-images";
+const SUPABASE_KEY =
+  "sb_publishable_U8AtOrufsfgCO_wH0x1D_w_nSNqRyS9";
 
-const ADMIN_EMAIL = "blackstore@blackstore.app";
 
-let accessToken = localStorage.getItem("blackstore_access_token") || "";
+const ADMIN_EMAIL =
+  "blackstore@blackstore.app";
+
+
+let accessToken =
+  localStorage.getItem("blackstore_admin_token") || "";
+
 let currentUser = null;
 let currentProfile = null;
-let authMode = "login";
+
 let allApps = [];
-let currentDetail = null;
+
+let selectedType = "app";
 
 
-/* =========================================
+/* =========================
    SUPABASE REQUEST
-========================================= */
+========================= */
 
 async function sbFetch(path, options = {}){
 
@@ -1290,19 +1266,27 @@ async function sbFetch(path, options = {}){
   };
 
   if(accessToken){
-    headers["Authorization"] = "Bearer " + accessToken;
+    headers["Authorization"] =
+      "Bearer " + accessToken;
   }
 
-  if(options.body && !headers["Content-Type"]){
-    headers["Content-Type"] = "application/json";
+  if(options.body &&
+     !(options.body instanceof FormData) &&
+     !headers["Content-Type"]){
+
+    headers["Content-Type"] =
+      "application/json";
   }
 
-  const res = await fetch(SUPABASE_URL + path, {
-    ...options,
-    headers
-  });
+  const response = await fetch(
+    SUPABASE_URL + path,
+    {
+      ...options,
+      headers
+    }
+  );
 
-  const text = await res.text();
+  const text = await response.text();
 
   let data = null;
 
@@ -1312,14 +1296,31 @@ async function sbFetch(path, options = {}){
     data = text;
   }
 
-  if(!res.ok){
+  if(!response.ok){
 
-    let message = "Ошибка Supabase";
+    let message =
+      "Ошибка Supabase";
 
-    if(data && data.message) message = data.message;
-    else if(data && data.error_description) message = data.error_description;
-    else if(data && data.error) message = data.error;
-    else if(typeof data === "string" && data) message = data;
+    if(data){
+
+      if(data.message)
+        message = data.message;
+
+      else if(data.error_description)
+        message = data.error_description;
+
+      else if(data.error)
+        message = data.error;
+
+      else if(data.error_code)
+        message = data.error_code;
+
+      else if(data.msg)
+        message = data.msg;
+
+      else if(typeof data === "string")
+        message = data;
+    }
 
     throw new Error(message);
   }
@@ -1328,722 +1329,503 @@ async function sbFetch(path, options = {}){
 }
 
 
-/* =========================================
-   AUTH
-========================================= */
+/* =========================
+   TOAST
+========================= */
 
-async function register(email,password,username){
+let toastTimer;
 
-  const data = await sbFetch("/auth/v1/signup",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      email,
-      password,
-      data:{
-        username: username || email.split("@")[0]
-      }
-    })
-  });
+function showToast(message){
 
-  if(data && data.access_token){
+  const toast =
+    document.getElementById("toast");
 
-    accessToken = data.access_token;
-    localStorage.setItem("blackstore_access_token",accessToken);
-  }
+  toast.textContent = message;
 
-  if(!data || !data.user){
-    throw new Error("Аккаунт не был создан");
-  }
+  toast.classList.add("show");
 
-  if(!data.access_token){
-    showToast("Аккаунт создан. Проверьте подтверждение email, если оно требуется.");
-  }
+  clearTimeout(toastTimer);
 
-  return data;
+  toastTimer =
+    setTimeout(()=>{
+      toast.classList.remove("show");
+    },3000);
 }
 
 
-async function login(email,password){
-
-  const data = await sbFetch(
-    "/auth/v1/token?grant_type=password",
-    {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        email,
-        password
-      })
-    }
-  );
-
-  accessToken = data.access_token;
-
-  localStorage.setItem(
-    "blackstore_access_token",
-    accessToken
-  );
-
-  return data;
-}
-
-
-async function getUser(){
-
-  if(!accessToken) return null;
-
-  try{
-
-    return await sbFetch("/auth/v1/user");
-
-  }catch{
-
-    accessToken = "";
-    localStorage.removeItem("blackstore_access_token");
-
-    return null;
-  }
-}
-
-
-async function logout(){
-
-  try{
-
-    if(accessToken){
-      await sbFetch("/auth/v1/logout",{
-        method:"POST"
-      });
-    }
-
-  }catch{}
-
-  accessToken = "";
-  currentUser = null;
-  currentProfile = null;
-
-  localStorage.removeItem("blackstore_access_token");
-
-  updateProfileUI();
-  goPage("profile");
-
-  showToast("Вы вышли из аккаунта");
-}
-
-
-/* =========================================
-   PROFILE
-========================================= */
-
-async function loadProfile(){
-
-  if(!currentUser){
-
-    currentProfile = null;
-    updateProfileUI();
-    return;
-  }
-
-  try{
-
-    const rows = await sbFetch(
-      "/rest/v1/profiles?id=eq." +
-      encodeURIComponent(currentUser.id) +
-      "&select=*"
-    );
-
-    currentProfile = rows && rows[0] ? rows[0] : null;
-
-  }catch(e){
-
-    console.error(e);
-    currentProfile = null;
-  }
-
-  updateProfileUI();
-}
-
-
-function isAdmin(){
-
-  return !!(
-    currentProfile &&
-    currentProfile.role === "admin"
-  );
-}
-
-
-function updateProfileUI(){
-
-  const out = document.getElementById("profileLoggedOut");
-  const inn = document.getElementById("profileLoggedIn");
-
-  if(!currentUser){
-
-    out.classList.remove("hidden");
-    inn.classList.add("hidden");
-
-    return;
-  }
-
-  out.classList.add("hidden");
-  inn.classList.remove("hidden");
-
-  const username =
-    (currentProfile && currentProfile.username) ||
-    currentUser.user_metadata?.username ||
-    currentUser.email?.split("@")[0] ||
-    "Пользователь";
-
-  document.getElementById("profileName").textContent = username;
-  document.getElementById("profileEmail").textContent = currentUser.email || "";
-
-  document.getElementById("profileAvatar").textContent =
-    username.substring(0,1).toUpperCase();
-
-  const admin = isAdmin();
-
-  document.getElementById("adminButton")
-    .classList.toggle("hidden",!admin);
-
-  document.getElementById("addButton")
-    .classList.toggle("hidden",!admin);
-
-  document.getElementById("adminBadge")
-    .classList.toggle("hidden",!admin);
-}
-
-
-/* =========================================
-   AUTH UI
-========================================= */
-
-function openAuth(mode){
-
-  authMode = mode;
-
-  document.getElementById("authModal")
-    .classList.add("show");
-
-  updateAuthUI();
-}
-
-
-function updateAuthUI(){
-
-  const register =
-    authMode === "register";
-
-  document.getElementById("authTitle").textContent =
-    register ? "Регистрация" : "Вход";
-
-  document.getElementById("authSubmit").textContent =
-    register ? "Создать аккаунт" : "Войти";
-
-  document.getElementById("authSwitch").textContent =
-    register ? "У меня уже есть аккаунт" : "Создать аккаунт";
-
-  document.getElementById("registerUsernameField")
-    .classList.toggle("hidden",!register);
-}
-
-
-function switchAuthMode(){
-
-  authMode =
-    authMode === "login"
-    ? "register"
-    : "login";
-
-  updateAuthUI();
-}
-
-
-async function submitAuth(){
-
-  const email =
-    document.getElementById("authEmail").value.trim();
-
-  const password =
-    document.getElementById("authPassword").value;
-
-  const username =
-    document.getElementById("registerUsername").value.trim();
-
-  if(!email || !password){
-
-    showToast("Заполни email и пароль");
-    return;
-  }
-
-  if(authMode === "register" && password.length < 6){
-
-    showToast("Пароль должен содержать минимум 6 символов");
-    return;
-  }
-
-  const button =
-    document.getElementById("authSubmit");
-
-  button.disabled = true;
-  button.textContent = "Подождите...";
-
-  try{
-
-    if(authMode === "register"){
-
-      await register(
-        email,
-        password,
-        username
-      );
-
-      closeModal("authModal");
-
-      showToast("Аккаунт создан");
-
-    }else{
-
-      await login(
-        email,
-        password
-      );
-
-      closeModal("authModal");
-
-      showToast("Вход выполнен");
-    }
-
-    currentUser = await getUser();
-
-    await loadProfile();
-
-  }catch(e){
-
-    showToast(e.message || "Ошибка авторизации");
-
-  }finally{
-
-    button.disabled = false;
-    updateAuthUI();
-  }
-}
-
-
-/* =========================================
+/* =========================
    NAVIGATION
-========================================= */
+========================= */
 
-function goPage(page){
+function openPage(page){
 
-  document.querySelectorAll(".page")
-    .forEach(p=>p.classList.remove("active"));
+  if(page === "admin" && !isAdmin()){
+    showToast("Доступ только для администратора");
+    return;
+  }
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p=>{
+      p.classList.remove("active");
+    });
 
   const target =
-    document.getElementById(page + "Page");
+    document.getElementById(
+      "page-" + page
+    );
 
-  if(target){
+  if(target)
     target.classList.add("active");
-  }
 
-  document.querySelectorAll(".nav-btn")
+
+  document
+    .querySelectorAll(".nav-btn")
     .forEach(btn=>{
-      btn.classList.toggle(
-        "active",
-        btn.dataset.page === page
-      );
+      btn.classList.remove("active");
+
+      if(btn.dataset.page === page)
+        btn.classList.add("active");
     });
+
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
 
-  if(page === "apps") renderCatalog("app");
-  if(page === "games") renderCatalog("game");
-  if(page === "admin") renderAdmin();
-}
 
-
-/* =========================================
-   LOAD APPS
-========================================= */
-
-async function loadApps(){
-
-  try{
-
-    allApps = await sbFetch(
-      "/rest/v1/apps?select=*&order=created_at.desc"
-    );
-
-    if(!Array.isArray(allApps)){
-      allApps = [];
-    }
-
-  }catch(e){
-
-    console.error(e);
-
-    allApps = [];
-
-    showToast("Не удалось загрузить каталог");
-  }
-
-  updateStats();
-  renderLatest();
-  renderCatalog("app");
-  renderCatalog("game");
-
-  if(isAdmin()){
+  if(page === "admin")
     renderAdmin();
-  }
 }
 
 
-/* =========================================
-   STATS
-========================================= */
-
-function updateStats(){
-
-  const apps =
-    allApps.filter(x=>x.type==="app");
-
-  const games =
-    allApps.filter(x=>x.type==="game");
-
-  const downloads =
-    allApps.reduce(
-      (sum,x)=>sum + Number(x.downloads || 0),
-      0
-    );
-
-  document.getElementById("statApps").textContent =
-    apps.length;
-
-  document.getElementById("statGames").textContent =
-    games.length;
-
-  document.getElementById("statDownloads").textContent =
-    formatNumber(downloads);
-}
-
-
-/* =========================================
-   CARD
-========================================= */
-
-function appCard(app){
-
-  const icon =
-    app.icon_url ||
-    makePlaceholderIcon(app.name);
-
-  const type =
-    app.type === "game"
-    ? "Игра"
-    : "Приложение";
-
-  return `
-    <button class="app-card" onclick="openDetail(${Number(app.id)})">
-
-      <img
-        class="app-icon"
-        src="${escapeAttr(icon)}"
-        alt=""
-        onerror="this.src='${escapeAttr(makePlaceholderIcon(app.name))}'"
-      >
-
-      <div class="app-info">
-
-        <div class="app-name">
-          ${escapeHtml(app.name || "Без названия")}
-        </div>
-
-        <div class="app-desc">
-          ${escapeHtml(app.description || "Без описания")}
-        </div>
-
-        <div class="app-meta">
-          ${escapeHtml(type)}
-          ·
-          ${escapeHtml(app.version || "1.0.0")}
-          ·
-          ${formatNumber(app.downloads || 0)} скач.
-        </div>
-
-      </div>
-
-      <div class="card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m9 18 6-6-6-6"/>
-        </svg>
-      </div>
-
-    </button>
-  `;
-}
-
-
-/* =========================================
-   LATEST
-========================================= */
-
-function renderLatest(){
-
-  const list =
-    document.getElementById("latestList");
-
-  const latest =
-    allApps.slice(0,8);
-
-  document.getElementById("latestCount")
-    .textContent = latest.length;
-
-  if(!latest.length){
-
-    list.innerHTML = emptyState(
-      "Каталог пока пуст"
-    );
-
-    return;
-  }
-
-  list.innerHTML =
-    latest.map(appCard).join("");
-}
-
-
-/* =========================================
-   CATALOG
-========================================= */
-
-function renderCatalog(type){
-
-  const isApp = type === "app";
-
-  const list =
-    document.getElementById(
-      isApp ? "appsList" : "gamesList"
-    );
-
-  const count =
-    document.getElementById(
-      isApp ? "appsCount" : "gamesCount"
-    );
-
-  const search =
-    document.getElementById(
-      isApp ? "appsSearch" : "gamesSearch"
-    );
-
-  if(!list) return;
-
-  const query =
-    (search?.value || "")
-      .trim()
-      .toLowerCase();
-
-  const filtered =
-    allApps.filter(app=>{
-
-      if(app.type !== type) return false;
-
-      if(!query) return true;
-
-      return (
-        String(app.name || "")
-          .toLowerCase()
-          .includes(query)
-        ||
-        String(app.description || "")
-          .toLowerCase()
-          .includes(query)
-        ||
-        String(app.category || "")
-          .toLowerCase()
-          .includes(query)
-      );
-    });
-
-  count.textContent =
-    filtered.length;
-
-  if(!filtered.length){
-
-    list.innerHTML =
-      emptyState(
-        query
-          ? "Ничего не найдено"
-          : "Здесь пока ничего нет"
-      );
-
-    return;
-  }
-
-  list.innerHTML =
-    filtered.map(appCard).join("");
-}
-
-
-/* =========================================
-   DETAIL
-========================================= */
-
-function openDetail(id){
-
-  const app =
-    allApps.find(x=>Number(x.id) === Number(id));
-
-  if(!app) return;
-
-  currentDetail = app;
-
-  document.getElementById("detailIcon").src =
-    app.icon_url ||
-    makePlaceholderIcon(app.name);
-
-  document.getElementById("detailName").textContent =
-    app.name || "Без названия";
-
-  document.getElementById("detailType").textContent =
-    app.type === "game"
-      ? "ИГРА"
-      : "ПРИЛОЖЕНИЕ";
-
-  document.getElementById("detailDesc").textContent =
-    app.description || "Описание отсутствует.";
-
-  document.getElementById("detailVersion").textContent =
-    app.version || "1.0.0";
-
-  document.getElementById("detailDownloads").textContent =
-    formatNumber(app.downloads || 0);
-
-  document.getElementById("detailCategory").textContent =
-    app.category || "Другое";
-
-  document.getElementById("detailDate").textContent =
-    formatDate(app.created_at);
-
-  const btn =
-    document.getElementById("downloadButton");
-
-  btn.disabled = !app.apk_url;
-
-  btn.textContent =
-    app.apk_url
-      ? "Скачать APK"
-      : "APK недоступен";
-
-  btn.onclick =
-    ()=>downloadApp(app);
-
-  document.getElementById("detailModal")
+/* =========================
+   MODALS
+========================= */
+
+function openModal(id){
+  document
+    .getElementById(id)
     .classList.add("show");
 }
 
-
-async function downloadApp(app){
-
-  if(!app.apk_url){
-
-    showToast("APK-файл отсутствует");
-    return;
-  }
-
-  try{
-
-    await sbFetch(
-      "/rest/v1/rpc/increment_downloads",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          app_id:Number(app.id)
-        })
-      }
-    );
-
-  }catch(e){
-
-    console.warn("Counter error:",e);
-  }
-
-  const newCount =
-    Number(app.downloads || 0) + 1;
-
-  app.downloads = newCount;
-
-  updateStats();
-
-  document.getElementById("detailDownloads")
-    .textContent = formatNumber(newCount);
-
-  /*
-    download attribute не всегда работает
-    одинаково во всех Android WebView.
-    Поэтому открываем публичный APK URL.
-    Android предложит скачать файл.
-  */
-
-  const a =
-    document.createElement("a");
-
-  a.href = app.apk_url;
-  a.download = "";
-
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-
-  showToast("Загрузка APK началась");
+function closeModal(id){
+  document
+    .getElementById(id)
+    .classList.remove("show");
 }
 
 
-/* =========================================
-   ADD APP
-========================================= */
+/* =========================
+   ADMIN AUTH
+========================= */
 
-function openAddApp(){
+function isAdmin(){
+
+  return !!(
+    currentUser &&
+    currentProfile &&
+    currentProfile.role === "admin"
+  );
+}
+
+
+function openAdminLogin(){
+
+  document.getElementById("adminLogin").value = "";
+  document.getElementById("adminPassword").value = "";
+
+  openModal("adminLoginModal");
+}
+
+
+async function adminLogin(){
+
+  const login =
+    document
+      .getElementById("adminLogin")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("adminPassword")
+      .value;
+
+
+  if(!login || !password){
+
+    showToast("Заполни логин и пароль");
+    return;
+  }
+
+
+  if(login.toLowerCase() !== "blackstore"){
+
+    showToast("Неверный логин");
+    return;
+  }
+
+
+  const button =
+    document.getElementById("adminLoginBtn");
+
+  button.disabled = true;
+  button.textContent = "Вход...";
+
+
+  try{
+
+    const data =
+      await sbFetch(
+        "/auth/v1/token?grant_type=password",
+        {
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            email:ADMIN_EMAIL,
+            password:password
+          })
+        }
+      );
+
+
+    if(!data.access_token)
+      throw new Error("Не получен токен администратора");
+
+
+    accessToken =
+      data.access_token;
+
+    localStorage.setItem(
+      "blackstore_admin_token",
+      accessToken
+    );
+
+
+    await loadAdmin();
+
+
+    if(!isAdmin()){
+
+      accessToken = "";
+
+      localStorage.removeItem(
+        "blackstore_admin_token"
+      );
+
+      currentUser = null;
+      currentProfile = null;
+
+      throw new Error(
+        "Этот аккаунт не является администратором"
+      );
+    }
+
+
+    closeModal("adminLoginModal");
+
+    updateProfileUI();
+
+    showToast("Вход администратора выполнен");
+
+    openPage("profile");
+
+  }catch(error){
+
+    showToast(
+      error.message ||
+      "Ошибка входа"
+    );
+
+  }finally{
+
+    button.disabled = false;
+    button.textContent = "Войти";
+  }
+}
+
+
+async function loadAdmin(){
+
+  try{
+
+    currentUser =
+      await sbFetch(
+        "/auth/v1/user"
+      );
+
+    if(!currentUser)
+      return;
+
+
+    const profiles =
+      await sbFetch(
+        "/rest/v1/profiles?select=*&id=eq." +
+        encodeURIComponent(currentUser.id) +
+        "&limit=1"
+      );
+
+
+    currentProfile =
+      profiles && profiles[0]
+        ? profiles[0]
+        : null;
+
+  }catch(error){
+
+    accessToken = "";
+
+    localStorage.removeItem(
+      "blackstore_admin_token"
+    );
+
+    currentUser = null;
+    currentProfile = null;
+  }
+}
+
+
+async function restoreAdmin(){
+
+  if(!accessToken)
+    return;
+
+  await loadAdmin();
+
+  updateProfileUI();
+}
+
+
+async function adminLogout(){
+
+  try{
+
+    if(accessToken){
+
+      await sbFetch(
+        "/auth/v1/logout",
+        {
+          method:"POST"
+        }
+      );
+
+    }
+
+  }catch{}
+
+
+  accessToken = "";
+
+  localStorage.removeItem(
+    "blackstore_admin_token"
+  );
+
+  currentUser = null;
+  currentProfile = null;
+
+  updateProfileUI();
+
+  openPage("profile");
+
+  showToast("Вы вышли из аккаунта");
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+function updateProfileUI(){
+
+  const guest =
+    document.getElementById("guestProfile");
+
+  const admin =
+    document.getElementById("adminProfile");
+
+
+  if(isAdmin()){
+
+    guest.classList.add("hidden");
+    admin.classList.remove("hidden");
+
+  }else{
+
+    guest.classList.remove("hidden");
+    admin.classList.add("hidden");
+  }
+}
+
+
+function openAdminPage(){
 
   if(!isAdmin()){
 
-    showToast("Доступ только для администратора");
+    showToast("Нет доступа");
     return;
   }
 
-  document.getElementById("addModal")
-    .classList.add("show");
+  openPage("admin");
 }
 
 
-document.getElementById("iconFile")
-  .addEventListener("change",function(){
+/* =========================
+   STORAGE URL
+========================= */
 
-    const file = this.files[0];
+function publicStorageUrl(
+  bucket,
+  path
+){
 
-    const preview =
-      document.getElementById("iconPreview");
+  return (
+    SUPABASE_URL +
+    "/storage/v1/object/public/" +
+    bucket +
+    "/" +
+    path
+  );
+}
 
-    if(!file){
 
-      preview.style.display="none";
-      return;
+/* =========================
+   UPLOAD
+========================= */
+
+async function uploadFile(
+  bucket,
+  file,
+  userId
+){
+
+  const safeName =
+    file.name
+      .replace(/[^\w.\-а-яА-ЯёЁ ]/g,"_")
+      .replace(/\s+/g,"_");
+
+  const path =
+    userId +
+    "/" +
+    Date.now() +
+    "_" +
+    safeName;
+
+
+  const response =
+    await fetch(
+      SUPABASE_URL +
+      "/storage/v1/object/" +
+      bucket +
+      "/" +
+      encodeURIComponent(path),
+      {
+        method:"POST",
+
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Authorization":
+            "Bearer " + accessToken,
+          "Content-Type":
+            file.type ||
+            "application/octet-stream"
+        },
+
+        body:file
+      }
+    );
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+    let message =
+      "Ошибка загрузки файла";
+
+    try{
+
+      const data =
+        JSON.parse(text);
+
+      message =
+        data.message ||
+        data.error ||
+        message;
+
+    }catch{
+
+      if(text)
+        message = text;
     }
 
-    const url =
-      URL.createObjectURL(file);
+    throw new Error(message);
+  }
 
-    preview.src = url;
-    preview.style.display = "block";
-  });
 
+  return publicStorageUrl(
+    bucket,
+    path
+  );
+}
+
+
+/* =========================
+   SELECT TYPE
+========================= */
+
+function selectType(type){
+
+  selectedType = type;
+
+  document
+    .getElementById("typeApp")
+    .classList.toggle(
+      "selected",
+      type === "app"
+    );
+
+  document
+    .getElementById("typeGame")
+    .classList.toggle(
+      "selected",
+      type === "game"
+    );
+}
+
+
+/* =========================
+   ADD MODAL
+========================= */
+
+function openAddModal(){
+
+  if(!isAdmin()){
+
+    showToast("Только администратор");
+    return;
+  }
+
+  document.getElementById("appName").value = "";
+  document.getElementById("appDescription").value = "";
+  document.getElementById("appVersion").value = "1.0.0";
+  document.getElementById("appCategory").value = "Другое";
+  document.getElementById("appIcon").value = "";
+  document.getElementById("appApk").value = "";
+
+  selectType("app");
+
+  openModal("addModal");
+}
+
+
+/* =========================
+   PUBLISH
+========================= */
 
 async function publishApp(){
 
@@ -2053,28 +1835,43 @@ async function publishApp(){
     return;
   }
 
+
   const name =
-    document.getElementById("addName").value.trim();
-
-  const type =
-    document.getElementById("addType").value;
-
-  const category =
-    document.getElementById("addCategory").value.trim()
-    || "Другое";
-
-  const version =
-    document.getElementById("addVersion").value.trim()
-    || "1.0.0";
+    document
+      .getElementById("appName")
+      .value
+      .trim();
 
   const description =
-    document.getElementById("addDescription").value.trim();
+    document
+      .getElementById("appDescription")
+      .value
+      .trim();
+
+  const version =
+    document
+      .getElementById("appVersion")
+      .value
+      .trim() ||
+    "1.0.0";
+
+  const category =
+    document
+      .getElementById("appCategory")
+      .value
+      .trim() ||
+    "Другое";
 
   const iconFile =
-    document.getElementById("iconFile").files[0];
+    document
+      .getElementById("appIcon")
+      .files[0];
 
   const apkFile =
-    document.getElementById("apkFile").files[0];
+    document
+      .getElementById("appApk")
+      .files[0];
+
 
   if(!name){
 
@@ -2084,121 +1881,89 @@ async function publishApp(){
 
   if(!apkFile){
 
-    showToast("Выберите APK-файл");
+    showToast("Выберите APK");
     return;
   }
 
-  if(apkFile.name.toLowerCase().endsWith(".apk") === false){
-
-    showToast("Нужен APK-файл");
-    return;
-  }
 
   const button =
-    document.getElementById("publishButton");
+    document.getElementById("publishBtn");
 
   button.disabled = true;
   button.textContent = "Загрузка...";
 
+
   try{
 
-    let iconUrl = null;
+    showToast("Загружаем файлы...");
 
-    /* ---------- ICON ---------- */
+
+    let iconUrl = "";
+
 
     if(iconFile){
 
-      const iconPath =
-        currentUser.id +
-        "/" +
-        Date.now() +
-        "_" +
-        safeFileName(iconFile.name);
-
-      await uploadFile(
-        IMAGE_BUCKET,
-        iconPath,
-        iconFile
-      );
-
       iconUrl =
-        publicStorageUrl(
-          IMAGE_BUCKET,
-          iconPath
+        await uploadFile(
+          "blackstore-images",
+          iconFile,
+          currentUser.id
         );
+
     }
 
-
-    /* ---------- APK ---------- */
-
-    const apkPath =
-      currentUser.id +
-      "/" +
-      Date.now() +
-      "_" +
-      safeFileName(apkFile.name);
-
-    await uploadFile(
-      FILE_BUCKET,
-      apkPath,
-      apkFile
-    );
 
     const apkUrl =
-      publicStorageUrl(
-        FILE_BUCKET,
-        apkPath
+      await uploadFile(
+        "blackstore-files",
+        apkFile,
+        currentUser.id
       );
 
 
-    /* ---------- DATABASE ---------- */
+    await sbFetch(
+      "/rest/v1/apps",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "Prefer":"return=minimal"
+        },
+        body:JSON.stringify({
+          owner_id:currentUser.id,
+          name:name,
+          description:description,
+          version:version,
+          type:selectedType,
+          category:category,
+          icon_url:iconUrl,
+          apk_url:apkUrl,
+          screenshots:[],
+          downloads:0
+        })
+      }
+    );
 
-    const rows =
-      await sbFetch(
-        "/rest/v1/apps",
-        {
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json",
-            "Prefer":"return=representation"
-          },
-          body:JSON.stringify({
-            owner_id:currentUser.id,
-            name,
-            description,
-            version,
-            type,
-            category,
-            icon_url:iconUrl,
-            apk_url:apkUrl,
-            screenshots:[],
-            downloads:0
-          })
-        }
-      );
-
-    if(!rows || !rows.length){
-
-      throw new Error(
-        "Публикация не была сохранена"
-      );
-    }
 
     closeModal("addModal");
 
-    clearAddForm();
+    showToast("Публикация добавлена");
 
     await loadApps();
 
-    showToast("Публикация добавлена");
+    renderAdmin();
 
-  }catch(e){
+    openPage(
+      selectedType === "game"
+        ? "games"
+        : "apps"
+    );
 
-    console.error(e);
+  }catch(error){
 
     showToast(
-      "Ошибка публикации: " +
-      (e.message || "неизвестная ошибка")
+      error.message ||
+      "Ошибка публикации"
     );
 
   }finally{
@@ -2209,174 +1974,40 @@ async function publishApp(){
 }
 
 
-/* =========================================
-   STORAGE UPLOAD
-========================================= */
-
-async function uploadFile(bucket,path,file){
-
-  const headers = {
-    "apikey":SUPABASE_KEY,
-    "Authorization":"Bearer " + accessToken,
-    "Content-Type":file.type || "application/octet-stream",
-    "x-upsert":"false"
-  };
-
-  const response =
-    await fetch(
-      SUPABASE_URL +
-      "/storage/v1/object/" +
-      encodeURIComponent(bucket) +
-      "/" +
-      path
-        .split("/")
-        .map(encodeURIComponent)
-        .join("/"),
-      {
-        method:"POST",
-        headers,
-        body:file
-      }
-    );
-
-  if(!response.ok){
-
-    let message = "Не удалось загрузить файл";
-
-    try{
-
-      const data =
-        await response.json();
-
-      message =
-        data.message ||
-        data.error ||
-        message;
-
-    }catch{}
-
-    throw new Error(message);
-  }
-}
-
-
-function publicStorageUrl(bucket,path){
-
-  return (
-    SUPABASE_URL +
-    "/storage/v1/object/public/" +
-    encodeURIComponent(bucket) +
-    "/" +
-    path
-      .split("/")
-      .map(encodeURIComponent)
-      .join("/")
-  );
-}
-
-
-/* =========================================
-   ADMIN
-========================================= */
-
-function openAdmin(){
-
-  if(!isAdmin()){
-
-    showToast("Нет доступа");
-    return;
-  }
-
-  goPage("admin");
-}
-
-
-function renderAdmin(){
-
-  if(!isAdmin()) return;
-
-  const list =
-    document.getElementById("adminList");
-
-  const count =
-    document.getElementById("adminCount");
-
-  count.textContent =
-    allApps.length;
-
-  if(!allApps.length){
-
-    list.innerHTML =
-      emptyState("Публикаций пока нет");
-
-    return;
-  }
-
-  list.innerHTML =
-    allApps.map(app=>{
-
-      const icon =
-        app.icon_url ||
-        makePlaceholderIcon(app.name);
-
-      return `
-        <div class="admin-row">
-
-          <img
-            src="${escapeAttr(icon)}"
-            alt=""
-          >
-
-          <div class="admin-row-info">
-            <b>${escapeHtml(app.name)}</b>
-            <span>
-              ${app.type === "game" ? "Игра" : "Приложение"}
-              ·
-              ${escapeHtml(app.version || "1.0.0")}
-            </span>
-          </div>
-
-          <button
-            class="small-danger"
-            onclick="deleteApp(${Number(app.id)})"
-            title="Удалить"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 7h16"/>
-              <path d="M10 11v6M14 11v6"/>
-              <path d="M6 7l1 13h10l1-13"/>
-              <path d="M9 7V4h6v3"/>
-            </svg>
-          </button>
-
-        </div>
-      `;
-
-    }).join("");
-}
-
+/* =========================
+   DELETE
+========================= */
 
 async function deleteApp(id){
 
   if(!isAdmin()){
 
-    showToast("Нет доступа");
+    showToast("Только администратор");
     return;
   }
 
-  const app =
-    allApps.find(x=>Number(x.id) === Number(id));
 
-  if(!app) return;
+  const item =
+    allApps.find(
+      app => String(app.id) === String(id)
+    );
+
+
+  if(!item)
+    return;
+
 
   const ok =
     confirm(
-      "Удалить «" +
-      app.name +
-      "» из BlackStore?"
+      "Удалить \"" +
+      item.name +
+      "\"?"
     );
 
-  if(!ok) return;
+
+  if(!ok)
+    return;
+
 
   try{
 
@@ -2388,238 +2019,750 @@ async function deleteApp(id){
       }
     );
 
-    allApps =
-      allApps.filter(
-        x=>Number(x.id)!==Number(id)
-      );
-
-    updateStats();
-    renderLatest();
-    renderCatalog("app");
-    renderCatalog("game");
-    renderAdmin();
 
     showToast("Публикация удалена");
 
-  }catch(e){
+    await loadApps();
+
+    renderAdmin();
+
+  }catch(error){
 
     showToast(
-      "Ошибка удаления: " +
-      (e.message || "")
+      error.message ||
+      "Ошибка удаления"
     );
   }
 }
 
 
-/* =========================================
-   HOME SEARCH
-========================================= */
+/* =========================
+   LOAD APPS
+========================= */
 
-document.getElementById("homeSearch")
-  .addEventListener("input",function(){
+async function loadApps(){
 
-    const q =
-      this.value.trim().toLowerCase();
+  const containers = [
+    "latestCatalog",
+    "appsCatalog",
+    "gamesCatalog"
+  ];
 
-    if(!q) return;
 
-    const found =
-      allApps.filter(app=>
-        String(app.name || "")
-          .toLowerCase()
-          .includes(q)
-        ||
-        String(app.description || "")
-          .toLowerCase()
-          .includes(q)
-      );
+  containers.forEach(id=>{
 
-    document.getElementById("latestCount")
-      .textContent = found.length;
+    const el =
+      document.getElementById(id);
 
-    document.getElementById("latestList")
-      .innerHTML =
-      found.length
-        ? found.map(appCard).join("")
-        : emptyState("Ничего не найдено");
+    if(el)
+      el.innerHTML =
+        '<div class="loader"></div>';
   });
 
-
-document.getElementById("appsSearch")
-  .addEventListener("input",()=>{
-    renderCatalog("app");
-  });
-
-
-document.getElementById("gamesSearch")
-  .addEventListener("input",()=>{
-    renderCatalog("game");
-  });
-
-
-/* =========================================
-   HELPERS
-========================================= */
-
-function closeModal(id){
-
-  document.getElementById(id)
-    .classList.remove("show");
-}
-
-
-function modalOutside(event,id){
-
-  if(event.target.id === id){
-    closeModal(id);
-  }
-}
-
-
-function showToast(message){
-
-  const toast =
-    document.getElementById("toast");
-
-  toast.textContent = message;
-  toast.classList.add("show");
-
-  clearTimeout(window.toastTimer);
-
-  window.toastTimer =
-    setTimeout(()=>{
-      toast.classList.remove("show");
-    },3500);
-}
-
-
-function formatNumber(value){
-
-  return new Intl.NumberFormat("ru-RU")
-    .format(Number(value || 0));
-}
-
-
-function formatDate(date){
-
-  if(!date) return "—";
 
   try{
 
-    return new Date(date)
-      .toLocaleDateString(
-        "ru-RU",
-        {
-          day:"2-digit",
-          month:"2-digit",
-          year:"numeric"
-        }
+    const data =
+      await sbFetch(
+        "/rest/v1/apps?select=*&order=created_at.desc"
       );
 
-  }catch{
 
-    return "—";
+    allApps =
+      Array.isArray(data)
+        ? data
+        : [];
+
+
+    renderStats();
+    renderLatest();
+    renderApps();
+    renderGames();
+
+  }catch(error){
+
+    console.error(error);
+
+    allApps = [];
+
+    document.getElementById(
+      "latestCatalog"
+    ).innerHTML =
+      emptyHtml(
+        "Каталог пока недоступен",
+        "Попробуйте обновить страницу"
+      );
+
+    document.getElementById(
+      "appsCatalog"
+    ).innerHTML =
+      emptyHtml(
+        "Каталог пока недоступен",
+        "Попробуйте обновить страницу"
+      );
+
+    document.getElementById(
+      "gamesCatalog"
+    ).innerHTML =
+      emptyHtml(
+        "Каталог пока недоступен",
+        "Попробуйте обновить страницу"
+      );
   }
 }
 
 
-function escapeHtml(value){
+/* =========================
+   STATS
+========================= */
 
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+function renderStats(){
+
+  const apps =
+    allApps.filter(
+      a => a.type === "app"
+    );
+
+  const games =
+    allApps.filter(
+      a => a.type === "game"
+    );
+
+
+  const downloads =
+    allApps.reduce(
+      (sum,a)=>
+        sum + Number(a.downloads || 0),
+      0
+    );
+
+
+  document.getElementById(
+    "statApps"
+  ).textContent =
+    apps.length;
+
+
+  document.getElementById(
+    "statGames"
+  ).textContent =
+    games.length;
+
+
+  document.getElementById(
+    "statDownloads"
+  ).textContent =
+    downloads;
 }
 
 
-function escapeAttr(value){
+/* =========================
+   CARD
+========================= */
 
-  return escapeHtml(value);
+function appCard(app){
+
+  const icon =
+    app.icon_url ||
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+        <rect width="120" height="120" rx="25" fill="#172131"/>
+        <path d="M60 28v64M28 60h64"
+          stroke="#1264ff"
+          stroke-width="10"
+          stroke-linecap="round"/>
+      </svg>
+    `);
+
+
+  const typeName =
+    app.type === "game"
+      ? "Игра"
+      : "Приложение";
+
+
+  return `
+    <button
+      class="card"
+      onclick="openDetail(${Number(app.id)})"
+      style="width:100%;text-align:left"
+    >
+
+      <img
+        class="icon"
+        src="${escapeHtml(icon)}"
+        alt=""
+        onerror="this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+            <rect width="120" height="120" rx="25" fill="#172131"/>
+          </svg>
+        `)}'"
+      >
+
+      <div class="card-info">
+
+        <div class="card-name">
+          ${escapeHtml(app.name)}
+        </div>
+
+        <div class="card-desc">
+          ${escapeHtml(
+            app.description ||
+            "Нет описания"
+          )}
+        </div>
+
+        <div class="card-meta">
+          <span>${escapeHtml(typeName)}</span>
+          <span>v${escapeHtml(app.version || "1.0.0")}</span>
+          <span>${Number(app.downloads || 0)} скач.</span>
+        </div>
+
+      </div>
+
+      <div class="open-btn">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+
+      </div>
+
+    </button>
+  `;
 }
 
 
-function safeFileName(name){
+/* =========================
+   LATEST
+========================= */
 
-  return String(name)
-    .replace(/[^a-zA-Z0-9._-]/g,"_");
+function renderLatest(){
+
+  const list =
+    allApps.slice(0,6);
+
+
+  document.getElementById(
+    "latestCount"
+  ).textContent =
+    allApps.length;
+
+
+  document.getElementById(
+    "latestCatalog"
+  ).innerHTML =
+    list.length
+      ? list.map(appCard).join("")
+      : emptyHtml(
+          "Пока ничего нет",
+          "Новые публикации появятся здесь"
+        );
 }
 
 
-function makePlaceholderIcon(name){
+/* =========================
+   APPS
+========================= */
 
-  const letter =
-    String(name || "B")
+function renderApps(){
+
+  const query =
+    document
+      .getElementById("appsSearch")
+      .value
       .trim()
-      .substring(0,1)
-      .toUpperCase();
+      .toLowerCase();
 
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
-      <rect width="200" height="200" rx="45" fill="#172333"/>
-      <text x="100" y="124"
-        text-anchor="middle"
-        font-family="Arial"
-        font-size="90"
-        font-weight="700"
-        fill="#5d96ff">${letter}</text>
-    </svg>
+
+  const list =
+    allApps.filter(app => {
+
+      if(app.type !== "app")
+        return false;
+
+      if(!query)
+        return true;
+
+      return (
+        String(app.name || "")
+          .toLowerCase()
+          .includes(query) ||
+
+        String(app.description || "")
+          .toLowerCase()
+          .includes(query) ||
+
+        String(app.category || "")
+          .toLowerCase()
+          .includes(query)
+      );
+    });
+
+
+  document.getElementById(
+    "appsCount"
+  ).textContent =
+    list.length;
+
+
+  document.getElementById(
+    "appsCatalog"
+  ).innerHTML =
+    list.length
+      ? list.map(appCard).join("")
+      : emptyHtml(
+          query
+            ? "Ничего не найдено"
+            : "Приложений пока нет",
+          query
+            ? "Попробуйте другой запрос"
+            : "Здесь появятся приложения"
+        );
+}
+
+
+/* =========================
+   GAMES
+========================= */
+
+function renderGames(){
+
+  const query =
+    document
+      .getElementById("gamesSearch")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const list =
+    allApps.filter(app => {
+
+      if(app.type !== "game")
+        return false;
+
+      if(!query)
+        return true;
+
+      return (
+        String(app.name || "")
+          .toLowerCase()
+          .includes(query) ||
+
+        String(app.description || "")
+          .toLowerCase()
+          .includes(query) ||
+
+        String(app.category || "")
+          .toLowerCase()
+          .includes(query)
+      );
+    });
+
+
+  document.getElementById(
+    "gamesCount"
+  ).textContent =
+    list.length;
+
+
+  document.getElementById(
+    "gamesCatalog"
+  ).innerHTML =
+    list.length
+      ? list.map(appCard).join("")
+      : emptyHtml(
+          query
+            ? "Ничего не найдено"
+            : "Игр пока нет",
+          query
+            ? "Попробуйте другой запрос"
+            : "Здесь появятся игры"
+        );
+}
+
+
+/* =========================
+   ADMIN LIST
+========================= */
+
+function renderAdmin(){
+
+  const container =
+    document.getElementById(
+      "adminCatalog"
+    );
+
+
+  if(!isAdmin()){
+
+    container.innerHTML =
+      emptyHtml(
+        "Нет доступа",
+        "Админ-панель доступна только администратору"
+      );
+
+    return;
+  }
+
+
+  if(!allApps.length){
+
+    container.innerHTML =
+      emptyHtml(
+        "Публикаций пока нет",
+        "Нажмите + чтобы добавить приложение или игру"
+      );
+
+    return;
+  }
+
+
+  container.innerHTML =
+    allApps.map(app=>{
+
+      const icon =
+        app.icon_url ||
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+            <rect width="120" height="120" rx="25" fill="#172131"/>
+          </svg>
+        `);
+
+
+      return `
+        <div class="admin-item">
+
+          <img
+            class="icon"
+            src="${escapeHtml(icon)}"
+            alt=""
+          >
+
+          <div class="admin-item-info">
+
+            <div class="admin-item-name">
+              ${escapeHtml(app.name)}
+            </div>
+
+            <div class="admin-item-type">
+              ${
+                app.type === "game"
+                  ? "Игра"
+                  : "Приложение"
+              }
+              · v${escapeHtml(app.version || "1.0.0")}
+            </div>
+
+          </div>
+
+          <button
+            class="delete-btn"
+            onclick="deleteApp(${Number(app.id)})"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M4 7h16"/>
+              <path d="M10 11v6M14 11v6"/>
+              <path d="M6 7l1 13h10l1-13"/>
+              <path d="M9 7V4h6v3"/>
+            </svg>
+          </button>
+
+        </div>
+      `;
+    }).join("");
+}
+
+
+/* =========================
+   DETAIL
+========================= */
+
+function openDetail(id){
+
+  const app =
+    allApps.find(
+      item =>
+        Number(item.id) === Number(id)
+    );
+
+
+  if(!app)
+    return;
+
+
+  const icon =
+    app.icon_url ||
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+        <rect width="120" height="120" rx="25" fill="#172131"/>
+      </svg>
+    `);
+
+
+  const typeName =
+    app.type === "game"
+      ? "Игра"
+      : "Приложение";
+
+
+  document.getElementById(
+    "detailContent"
+  ).innerHTML = `
+
+    <img
+      class="detail-icon"
+      src="${escapeHtml(icon)}"
+      alt=""
+    >
+
+    <div class="detail-name">
+      ${escapeHtml(app.name)}
+    </div>
+
+    <div class="detail-desc">
+      ${escapeHtml(
+        app.description ||
+        "Описание отсутствует."
+      )}
+    </div>
+
+    <div class="detail-info">
+
+      <div class="detail-box">
+        <span>Тип</span>
+        <strong>${escapeHtml(typeName)}</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Версия</span>
+        <strong>${escapeHtml(app.version || "1.0.0")}</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Категория</span>
+        <strong>${escapeHtml(app.category || "Другое")}</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Скачивания</span>
+        <strong>${Number(app.downloads || 0)}</strong>
+      </div>
+
+    </div>
+
+    ${
+      app.apk_url
+      ? `
+        <button
+          class="primary-btn"
+          style="margin-top:16px"
+          onclick="downloadApp(${Number(app.id)})"
+        >
+          Скачать APK
+        </button>
+      `
+      : `
+        <div
+          class="small-note"
+          style="margin-top:16px"
+        >
+          APK пока недоступен.
+        </div>
+      `
+    }
+
   `;
 
-  return "data:image/svg+xml;charset=UTF-8," +
-    encodeURIComponent(svg);
+
+  openModal("detailModal");
 }
 
 
-function emptyState(text){
+/* =========================
+   DOWNLOAD
+========================= */
+
+async function downloadApp(id){
+
+  const app =
+    allApps.find(
+      item =>
+        Number(item.id) === Number(id)
+    );
+
+
+  if(!app || !app.apk_url){
+
+    showToast("APK недоступен");
+    return;
+  }
+
+
+  try{
+
+    await sbFetch(
+      "/rest/v1/rpc/increment_downloads",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":
+            "application/json"
+        },
+        body:JSON.stringify({
+          app_id:Number(id)
+        })
+      }
+    );
+
+  }catch(error){
+
+    console.log(
+      "Counter error:",
+      error
+    );
+  }
+
+
+  window.location.href =
+    app.apk_url;
+
+
+  setTimeout(
+    loadApps,
+    1000
+  );
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+function emptyHtml(
+  title,
+  text
+){
 
   return `
     <div class="empty">
-
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="4" y="4" width="16" height="16" rx="3"/>
-        <path d="M8 9h8M8 13h5"/>
-      </svg>
-
-      <div>${escapeHtml(text)}</div>
-
+      <strong>${escapeHtml(title)}</strong>
+      <span>${escapeHtml(text)}</span>
     </div>
   `;
 }
 
 
-function clearAddForm(){
+/* =========================
+   ESCAPE
+========================= */
 
-  document.getElementById("addName").value="";
-  document.getElementById("addCategory").value="";
-  document.getElementById("addVersion").value="1.0.0";
-  document.getElementById("addDescription").value="";
-  document.getElementById("iconFile").value="";
-  document.getElementById("apkFile").value="";
+function escapeHtml(value){
 
-  document.getElementById("iconPreview")
-    .style.display="none";
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-/* =========================================
+/* =========================
+   SEARCH
+========================= */
+
+document
+  .getElementById("appsSearch")
+  .addEventListener(
+    "input",
+    renderApps
+  );
+
+
+document
+  .getElementById("gamesSearch")
+  .addEventListener(
+    "input",
+    renderGames
+  );
+
+
+document
+  .getElementById("homeSearch")
+  .addEventListener(
+    "input",
+    function(){
+
+      const query =
+        this.value.trim();
+
+      if(!query)
+        return;
+
+
+      openPage("apps");
+
+      document
+        .getElementById("appsSearch")
+        .value = query;
+
+      renderApps();
+    }
+  );
+
+
+/* =========================
+   MODAL BACKGROUND CLOSE
+========================= */
+
+document
+  .querySelectorAll(".modal")
+  .forEach(modal=>{
+
+    modal.addEventListener(
+      "click",
+      function(event){
+
+        if(event.target === modal)
+          modal.classList.remove("show");
+
+      }
+    );
+
+  });
+
+
+/* =========================
    START
-========================================= */
+========================= */
 
-async function init(){
+(async function(){
 
-  currentUser =
-    await getUser();
+  updateProfileUI();
 
-  await loadProfile();
+  await restoreAdmin();
 
   await loadApps();
-}
 
-init();
+  updateProfileUI();
 
+})();
 </script>
 
 </body>
-  </html>
+</html>
